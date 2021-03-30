@@ -1,0 +1,16 @@
+/* unvisited link */
+a {
+    color: ligh;
+    margin-left: 20px;
+    font-size: large;
+}
+
+mat-toolbar {
+    background-color: lightblue;
+}
+
+/* mouse over link */
+a:hover {
+    color: rgb(141, 255, 147);
+}
+

@@ -1,0 +1,103 @@
+<mat-card>
+  <h2 style="margin-bottom: 40px;">Preference</h2>
+  <form class="example-form" (submit)="onSubmitPrefer(preferForm)" #preferForm="ngForm">    
+    
+    <!-- E-mail, FirstName, LastName, City, State, 
+      PreferredMaxDistanceFromCurrentHome, PreferredCostOfLivingMax, 
+      PreferredMinTemperature, PreferredMaxTemperature -->
+      
+    <mat-label>Max Distance (miles)</mat-label>
+    <div style="display: flex; margin-bottom: 30px;">
+      <p>1</p>
+      <mat-slider 
+        min="1" 
+        max="5000" 
+        value="200" 
+        class="example-full-width" 
+        #distslider>
+      </mat-slider>
+      <p>5000</p>
+      
+      <input 
+        matInput 
+        type="number" 
+        value="{{distslider.value}}" 
+        class="slider-output"
+        name="maxDist"
+        ngModel
+        required
+        >
+    </div>
+
+    <mat-label>Max Cost of Living</mat-label>
+    <div style="display: flex; margin-bottom: 30px;">
+      <p>10</p>
+      <mat-slider 
+        min="10" 
+        max="5000" 
+        value="200" 
+        class="example-full-width" 
+        #maxcostslider>
+      </mat-slider>
+      <p>5000</p>
+      <input 
+        matInput 
+        type="number" 
+        value="{{maxcostslider.value}}" 
+        class="slider-output"
+        name="maxCost"
+        ngModel
+        required
+        >
+    </div>
+
+    <mat-label>Avg Cost of Living</mat-label>
+    <div style="display: flex; margin-bottom: 30px;">
+      <p>0</p>
+      <mat-slider 
+        min="0" 
+        max="{{maxcostslider.value}}" 
+        value="200" 
+        class="example-full-width" 
+        #avgcostslider>
+      </mat-slider>
+      <p>{{maxcostslider.value}}</p>
+      <input 
+        matInput 
+        type="number" 
+        value="{{avgcostslider.value}}" 
+        class="slider-output"
+        name="avgCost"
+        ngModel
+        required
+        >
+    </div>
+  
+    <div style="display: flex; margin-bottom: 20px;">
+      <mat-form-field class="example-full-width">
+        <mat-label>Minimum Temperature</mat-label>
+        <input 
+          matInput 
+          type="number" 
+          name="minTemp" 
+          ngModel 
+          required
+          >
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" style="margin-left: 5%;">
+        <mat-label>Maximum Temperature</mat-label>
+        <input 
+          matInput 
+          type="number" 
+          name="maxTemp" 
+          ngModel
+          required
+          >
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" style="margin-left: 30%; width: 40%;">Submit</button>
+
+  </form>
+</mat-card>
