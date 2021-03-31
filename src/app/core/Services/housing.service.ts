@@ -12,7 +12,7 @@ export class HousingService {
 
     constructor(private http: HttpClient) {}
 
-    getUsers() {
+    getHousing() {
         this.http.get<Housing[]>('http://localhost:3000/housing')
         .subscribe((userData) => {
             this.housings = userData;
@@ -20,7 +20,7 @@ export class HousingService {
         });
     }
 
-    getUserUpdateListener() {
+    getHousingUpdateListener() {
         return this.housingUpdated.asObservable();
     }
 }

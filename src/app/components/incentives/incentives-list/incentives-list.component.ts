@@ -17,8 +17,8 @@ export class IncentivesListComponent implements OnInit, OnDestroy {
   constructor(public incentivesService: IncentivesService) {}
 
   ngOnInit() { 
-    this.incentivesService.getUsers();
-    this.incentivesSub = this.incentivesService.getUserUpdateListener()
+    this.incentivesService.getIncentives();
+    this.incentivesSub = this.incentivesService.getIncentivesUpdateListener()
         .subscribe((incentives: Incentives[]) => {
             this.incentives = incentives;
         });

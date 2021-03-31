@@ -12,7 +12,7 @@ export class IncentivesService {
 
     constructor(private http: HttpClient) {}
 
-    getUsers() {
+    getIncentives() {
         this.http.get<Incentives[]>('http://localhost:3000/incentives')
         .subscribe((userData) => {
             this.incentives = userData;
@@ -20,7 +20,7 @@ export class IncentivesService {
         });
     }
 
-    getUserUpdateListener() {
+    getIncentivesUpdateListener() {
         return this.incentivesUpdated.asObservable();
     }
 }

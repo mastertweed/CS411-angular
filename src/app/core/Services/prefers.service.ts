@@ -12,7 +12,7 @@ export class PrefersService {
 
     constructor(private http: HttpClient) {}
 
-    getUsers() {
+    getPrefers() {
         this.http.get<Prefers[]>('http://localhost:3000/prefers')
         .subscribe((userData) => {
             this.prefers = userData;
@@ -20,7 +20,7 @@ export class PrefersService {
         });
     }
 
-    getUserUpdateListener() {
+    getPrefersUpdateListener() {
         return this.perfersUpdated.asObservable();
     }
 }

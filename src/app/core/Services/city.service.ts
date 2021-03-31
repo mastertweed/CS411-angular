@@ -13,7 +13,7 @@ export class CityService {
 
     constructor(private http: HttpClient) {}
 
-    getUsers() {
+    getCity() {
         this.http.get<City[]>(environment.apiURL + "/city")
         .subscribe((userData) => {
             this.citys = userData;
@@ -21,7 +21,7 @@ export class CityService {
         });
     }
 
-    getUserUpdateListener() {
+    getCityUpdateListener() {
         return this.citysUpdated.asObservable();
     }
 }

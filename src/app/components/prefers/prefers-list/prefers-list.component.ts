@@ -18,8 +18,8 @@ export class PrefersListComponent implements OnInit, OnDestroy {
   constructor(public prefersService: PrefersService) {}
 
   ngOnInit() { 
-    this.prefersService.getUsers();
-    this.prefersSub = this.prefersService.getUserUpdateListener()
+    this.prefersService.getPrefers();
+    this.prefersSub = this.prefersService.getPrefersUpdateListener()
         .subscribe((prefers: Prefers[]) => {
             this.prefers = prefers;
         });

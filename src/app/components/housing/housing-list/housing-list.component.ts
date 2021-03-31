@@ -17,8 +17,8 @@ export class HousingListComponent implements OnInit, OnDestroy {
   constructor(public housingService: HousingService) {}
 
   ngOnInit() { 
-    this.housingService.getUsers();
-    this.housingSub = this.housingService.getUserUpdateListener()
+    this.housingService.getHousing();
+    this.housingSub = this.housingService.getHousingUpdateListener()
         .subscribe((housings: Housing[]) => {
             this.housings = housings;
         });
