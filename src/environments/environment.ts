@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiURL: "http://LocalHost:3000"
-  // apiURL: "http://nodeangular-env.eba-wnqdnhsn.us-east-1.elasticbeanstalk.com"
+  // apiURL: "http://LocalHost:3000"
+  apiURL: "http://nodeangular-env.eba-wnqdnhsn.us-east-1.elasticbeanstalk.com"
 };
 
 /*

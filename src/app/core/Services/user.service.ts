@@ -14,7 +14,7 @@ export class UserService {
     constructor(private http: HttpClient) {}
 
     getUsers() {
-        this.http.get<User[]>(environment.apiURL + "/user")
+        this.http.get<User[]>(environment.apiURL + "/users")
         .subscribe((userData) => {
             this.users = userData;
             this.usersUpdated.next([...this.users]);
