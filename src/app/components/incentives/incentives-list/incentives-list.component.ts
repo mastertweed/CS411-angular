@@ -17,8 +17,6 @@ export class IncentivesListComponent implements OnInit, OnDestroy {
   constructor(public incentivesService: IncentivesService) {}
 
   ngOnInit() { 
-      this.incentivesService.deleteIncentive("A", "B").subscribe(res => {
-	});
       this.incentivesService.getIncentives().subscribe(res => {
 	  this.incentives = res;
       });
@@ -30,19 +28,18 @@ export class IncentivesListComponent implements OnInit, OnDestroy {
     //    });
   }
 
-  ngOnAdd() {
-    // TODO: Get State, City, Description and Requirements from HTML form
-      this.incentivesService.addIncentive("A", "B", "C", "D").subscribe(res => {
+  ngOnAdd(form) {
+      this.incentivesService.addIncentive(form.state, form.city, form.description, form.requirements).subscribe(res => {
 	});
   }
-  ngOnDelete() {
-    // TODO: Get State, City from HTML form
-      this.incentivesService.deleteIncentive("A", "B").subscribe(res => {
+  ngOnDelete(form) {
+      this.incentivesService.deleteIncentive(form.state, form.city).subscribe(res => {
 	});
   }
 
   ngOnDestroy() {
-      this.incentivesSub.unsubscribe();
+//      this.incentivesSub.unsubscribe();
+//      this.incentivesService.getIncentives().unsubscribe();
   }
 
 }

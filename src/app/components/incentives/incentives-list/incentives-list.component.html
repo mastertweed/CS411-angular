@@ -1,3 +1,27 @@
+<h2>Add New Incentive</h2>
+
+<form #addincentive = "ngForm" (ngSubmit) = "ngOnAdd(addincentive.value)" >
+  <input type = "text" name = "city" placeholder = "city" ngModel>
+  <br/>
+  <input type = "text" name = "state" placeholder = "state" ngModel>
+  <br/>
+  <input type = "text" name = "description" placeholder = "description" ngModel>
+  <br/>
+  <input type = "text" name = "requirements" placeholder = "requirements" ngModel>
+  <br/>
+  <input type = "submit" value = "Create Incentive">
+</form>
+
+<h2>Remove Incentive</h2>
+
+<form #deleteincentive = "ngForm" (ngSubmit) = "ngOnDelete(deleteincentive.value)" >
+  <input type = "text" name = "city" placeholder = "city" ngModel>
+  <br/>
+  <input type = "text" name = "state" placeholder = "state" ngModel>
+  <br/>
+  <input type = "submit" value = "Delete Incentive">
+</form>
+
 <table class="styled-table">
     <thead>
         <tr>
