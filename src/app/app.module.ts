@@ -11,6 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -50,6 +52,7 @@ import { UserInformationComponent } from './components/user-information/user-inf
     MatCardModule,
     MatButtonModule,
     MatSliderModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

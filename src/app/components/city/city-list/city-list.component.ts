@@ -17,8 +17,8 @@ export class CityListComponent implements OnInit, OnDestroy {
   constructor(public cityService: CityService) {}
 
   ngOnInit() { 
-    this.cityService.getUsers();
-    this.citySub = this.cityService.getUserUpdateListener()
+    this.cityService.getCity();
+    this.citySub = this.cityService.getCityUpdateListener()
         .subscribe((citys: City[]) => {
             this.citys = citys;
         });

@@ -25,13 +25,9 @@ export class UserService {
         return this.usersUpdated.asObservable();
     }
 
-    addUser(user_id: number, user_name: string, income: number, city: string, age: number, password: string) {
+    addUser(email: number, password: string) {
          const user: User = {
-             user_id: user_id, 
-             user_name: user_name, 
-             income: income, 
-             city: city, 
-             age: age, 
+             email: email, 
              password: password
             }
          this.users.push(user);
