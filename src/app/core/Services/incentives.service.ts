@@ -7,20 +7,21 @@ import { Incentives } from "../../Shared/Models/incentives.model";
 
 @Injectable({providedIn: 'root'})
 export class IncentivesService {
-    baseURL: string = "http://sp21-cs411-04.cs.illinois.edu:3000/";
+    // baseURL: string = "http://sp21-cs411-04.cs.illinois.edu:3000/";
+    baseURL: string = "http://nodeangular-env.eba-wnqdnhsn.us-east-1.elasticbeanstalk.com/";
     private incentives: Incentives[] = [];
     private incentivesUpdated = new Subject<Incentives[]>();
 
     constructor(private http: HttpClient) {}
 
-    getIncentives() {
-        this.http.get<Incentives[]>('http://localhost:3000/incentives')
-        //this.http.get<Incentives[]>(environment.apiURL + "/incentives")
-        .subscribe((userData) => {
-            this.incentives = userData;
-            this.incentivesUpdated.next([...this.incentives]);
-        });
-    }
+    // getIncentives() {
+    //     this.http.get<Incentives[]>('http://localhost:3000/incentives')
+    //     //this.http.get<Incentives[]>(environment.apiURL + "/incentives")
+    //     .subscribe((userData) => {
+    //         this.incentives = userData;
+    //         this.incentivesUpdated.next([...this.incentives]);
+    //     });
+    // }
 
     getIncentivesUpdateListener() {
         return this.incentivesUpdated.asObservable();

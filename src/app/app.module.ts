@@ -24,7 +24,8 @@ import { PreferenceFormComponent } from './components/preference-form/preference
 import { PrefersListComponent } from './components/prefers/prefers-list/prefers-list.component';
 import { UserListComponent } from './components/users/user-list/user-list.component';
 import { LoginComponent } from './components/login/login.component';
-import { UserInformationComponent } from './components/user-information/user-information.component';
+import { UserInformationListComponent } from './components/user-information/user-information-list/user-information-list.component';
+import { UserInformationCreateComponent } from './components/user-information/user-information-create/user-information-create.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { UserInformationComponent } from './components/user-information/user-inf
     PrefersListComponent,
     UserListComponent,
     LoginComponent,
-    UserInformationComponent
+    UserInformationListComponent,
+    UserInformationCreateComponent
   ],
   imports: [
     BrowserModule,

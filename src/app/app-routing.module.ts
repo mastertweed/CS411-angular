@@ -8,7 +8,7 @@ import { HousingListComponent } from "./components/housing/housing-list/housing-
 import { PrefersListComponent } from "./components/prefers/prefers-list/prefers-list.component";
 import { PreferenceFormComponent } from "./components/preference-form/preference-form.component";
 import { LoginComponent } from "./components/login/login.component";
-import { UserInformationComponent } from "./components/user-information/user-information.component";
+import { UserInformationCreateComponent } from "./components/user-information/user-information-create/user-information-create.component";
 
 const routes: Routes = [
   { path: "", component: UserListComponent },
@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: "housing", component: HousingListComponent },
   { path: "prefers", component: PrefersListComponent },
   { path: "preference", component: PreferenceFormComponent },
-  { path: "user-info", component: UserInformationComponent },
+  { path: "user-info", component: UserInformationCreateComponent },
   { path: "login", component: LoginComponent }
 ];
 
