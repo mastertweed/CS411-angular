@@ -9,8 +9,8 @@ import { NgForm } from "@angular/forms";
 export class PreferenceFormComponent implements OnInit {
 
   maxdistvalue = 0;
+  minCostValue = 0;
   maxCostValue = 0;
-  avgCostValue = 0;
   avgAge = 0;
   bedrooms: number[] = [];
   minTempValue = 0;
@@ -27,8 +27,8 @@ export class PreferenceFormComponent implements OnInit {
       return;
     }
     this.maxdistvalue = form.value.maxDist
+    this.minCostValue = form.value.minCost
     this.maxCostValue = form.value.maxCost
-    this.avgCostValue = form.value.avgCost
     this.avgAge = form.value.avgAge
     this.minTempValue = form.value.minTemp
     this.maxTempValue = form.value.maxTemp
