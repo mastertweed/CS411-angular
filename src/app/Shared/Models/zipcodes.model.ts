@@ -1,5 +1,5 @@
 export interface ZipCodes {
-    county_id: string;
+//    county_id: string;
     zip: number;
     primary_city: string;
     state: string;

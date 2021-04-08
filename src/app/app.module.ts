@@ -25,7 +25,9 @@ import { PrefersListComponent } from './components/prefers/prefers-list/prefers-
 import { UserListComponent } from './components/users/user-list/user-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserInformationComponent } from './components/user-information/user-information.component';
-
+import { ZipcodeListComponent } from './components/zipcodes/zipcode-list/zipcode-list.component';
+import { CensusListComponent } from './components/census/census-list/census-list.component';
+import { WeatherListComponent } from './components/weather/weather-list/weather-list.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,9 @@ import { UserInformationComponent } from './components/user-information/user-inf
     PrefersListComponent,
     UserListComponent,
     LoginComponent,
+    ZipcodeListComponent,
+    CensusListComponent,
+    WeatherListComponent,
     UserInformationComponent
   ],
   imports: [

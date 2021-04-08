@@ -1,0 +1,26 @@
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>zipcode</th>
+            <th>city</th>
+            <th>state</th>
+	    <th>county</th>
+            <th>time zone</th>
+            <th>latitude</th>
+            <th>longitude</th>
+            <th>population</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let zipcode of zipcodes">
+            <td>{{zipcode.zip}}</td>
+            <td>{{zipcode.primary_city}}</td>
+            <td>{{zipcode.state}}</td>
+            <td>{{zipcode.county}}</td>
+            <td>{{zipcode.timezone}}</td>
+            <td>{{zipcode.latitude}}</td>
+            <td>{{zipcode.longitude}}</td>
+            <td>{{zipcode.irs_estimated_population_2015}}</td>
+        </tr>
+    </tbody>
+</table>

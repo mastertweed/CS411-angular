@@ -1,0 +1,23 @@
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>city</th>
+            <th>state</th>
+            <th>average high(f)</th>
+            <th>average low(f)</th>
+            <th>average high(c)</th>
+            <th>average low(c)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let weather of weathers">
+            <td>{{weather.city}}</td>
+            <td>{{weather.state}}</td>
+            <td>{{weather.avg_high_f}}</td>
+            <td>{{weather.avg_lost_f}}</td>
+            <td>{{weather.avg_high_c}}</td>
+            <td>{{weather.avg_low_c}}</td>
+        </tr>
+    </tbody>
+</table>
+

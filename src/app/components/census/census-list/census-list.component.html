@@ -1,0 +1,40 @@
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>city</th>
+            <th>state</th>
+            <th>population</th>
+            <th>under18</th>
+            <th>over65</th>
+            <th>median age</th>
+            <th>hs grad</th>
+            <th>some college</th>
+            <th>associates degree</th>
+            <th>bachelors degree</th>
+            <th>grad degree</th>
+            <th>mean earnings</th>
+            <th>per capita income</th>
+            <th>ansi state code</th>
+            <th>ansi place id</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let census of censuses">
+            <td>{{census.city}}</td>
+            <td>{{census.state}}</td>
+            <td>{{census.population}}</td>
+            <td>{{census.under18}}</td>
+            <td>{{census.over65}}</td>
+            <td>{{census.median_age}}</td>
+            <td>{{census.hs_grad}}</td>
+            <td>{{census.some_college}}</td>
+            <td>{{census.associates_degree}}</td>
+            <td>{{census.bachelors_degree}}</td>
+            <td>{{census.grad_degree}}</td>
+            <td>{{census.mean_earnings}}</td>
+            <td>{{census.per_capita_income}}</td>
+            <td>{{census.ansi_state}}</td>
+            <td>{{census.ansi_place}}</td>
+        </tr>
+    </tbody>
+</table>

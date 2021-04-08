@@ -1,5 +1,4 @@
 export interface Census {
-    county_id: string;
     city: string;
     state: string;
     population: number;
@@ -14,4 +13,5 @@ export interface Census {
     mean_earnings: number;
     per_capita_income: number;
     ansi_state: number;
+    ansi_place: number;
 }

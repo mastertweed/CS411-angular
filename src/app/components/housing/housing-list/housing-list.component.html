@@ -1,16 +1,20 @@
 <table class="styled-table">
     <thead>
         <tr>
-            <th>county_id</th>
-            <th>bedrooms</th>
-            <th>median_price</th>
+            <th>city</th>
+            <th>state</th>
+            <th>metro</th>
+            <th>county</th>
+            <th>price</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let housing of housings">
-            <td>{{housing.county_id}}</td>
-            <td>{{housing.bedrooms}}</td>
-            <td>{{housing.median_price}}</td>
+            <td>{{housing.city}}</td>
+            <td>{{housing.state}}</td>
+            <td>{{housing.metro}}</td>
+            <td>{{housing.county}}</td>
+            <td>{{housing.price}}</td>
         </tr>
     </tbody>
 </table>

@@ -1,5 +1,7 @@
 export interface Housing {
-    county_id: string;
-    median_price: number;
-    bedrooms: number;
+    city: string;
+    state: string;
+    metro: string;
+    county: string;
+    price: number;
 }
