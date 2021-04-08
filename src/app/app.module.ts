@@ -24,10 +24,13 @@ import { PreferenceFormComponent } from './components/preference-form/preference
 import { PrefersListComponent } from './components/prefers/prefers-list/prefers-list.component';
 import { UserListComponent } from './components/users/user-list/user-list.component';
 import { LoginComponent } from './components/login/login.component';
-import { UserInformationComponent } from './components/user-information/user-information.component';
 import { ZipcodeListComponent } from './components/zipcodes/zipcode-list/zipcode-list.component';
 import { CensusListComponent } from './components/census/census-list/census-list.component';
 import { WeatherListComponent } from './components/weather/weather-list/weather-list.component';
+import { UserInformationListComponent } from './components/user-information/user-information-list/user-information-list.component';
+import { UserInformationCreateComponent } from './components/user-information/user-information-create/user-information-create.component';
+
+>>>>>>> fc1ef5a488785e6d7393c0241cedd09575fe8a78
 
 @NgModule({
   declarations: [
@@ -43,7 +46,8 @@ import { WeatherListComponent } from './components/weather/weather-list/weather-
     ZipcodeListComponent,
     CensusListComponent,
     WeatherListComponent,
-    UserInformationComponent
+    UserInformationListComponent,
+    UserInformationCreateComponent
   ],
   imports: [
     BrowserModule,

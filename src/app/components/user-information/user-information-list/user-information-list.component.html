@@ -1,0 +1,27 @@
+<div>
+  <table class="styled-table">
+    <thead>
+        <tr>
+          <th>email</th>
+          <th>firstname</th>
+          <th>lastname</th>
+          <th>city</th>
+          <th>state</th>
+          <th>zipcode</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="userinfo.length < 1">
+            There are no entries
+        </tr>
+        <tr *ngFor="let user_info of userinfo">
+          <td>{{user_info.email}}</td>
+          <td>{{user_info.firstname}}</td>
+          <td>{{user_info.lastname}}</td>
+          <td>{{user_info.city}}</td>
+          <td>{{user_info.state}}</td>
+          <td>{{user_info.zipcode}}</td>
+        </tr>
+    </tbody>
+  </table>
+</div>

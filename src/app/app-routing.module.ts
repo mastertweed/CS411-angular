@@ -8,10 +8,10 @@ import { HousingListComponent } from "./components/housing/housing-list/housing-
 import { PrefersListComponent } from "./components/prefers/prefers-list/prefers-list.component";
 import { PreferenceFormComponent } from "./components/preference-form/preference-form.component";
 import { LoginComponent } from "./components/login/login.component";
-import { UserInformationComponent } from "./components/user-information/user-information.component";
 import { ZipcodeListComponent } from "./components/zipcodes/zipcode-list/zipcode-list.component";
 import { CensusListComponent } from "./components/census/census-list/census-list.component";
 import { WeatherListComponent } from "./components/weather/weather-list/weather-list.component";
+import { UserInformationCreateComponent } from "./components/user-information/user-information-create/user-information-create.component";
 
 const routes: Routes = [
   { path: "", component: UserListComponent },
@@ -21,11 +21,11 @@ const routes: Routes = [
   { path: "housing", component: HousingListComponent },
   { path: "prefers", component: PrefersListComponent },
   { path: "preference", component: PreferenceFormComponent },
-  { path: "user-info", component: UserInformationComponent },
-  { path: "login", component: LoginComponent },
   { path: "zipcode", component: ZipcodeListComponent },
   { path: "census", component: CensusListComponent },
   { path: "weather", component: WeatherListComponent }
+  { path: "user-info", component: UserInformationCreateComponent },
+  { path: "login", component: LoginComponent }
 ];
 
 @NgModule({
