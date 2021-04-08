@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Theme 1 */
+/*  #05668D
+    #028090
+    #00A896
+    #02C39A
+    #F0F3BD 
+*/
+
+.color-sample {
+    background-color: #05668D;
+    background-color: #028090;
+    background-color: #00A896;
+    background-color: #02C39A;
+    background-color: #F0F3BD;
+}

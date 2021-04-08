@@ -30,3 +30,13 @@
     font-weight: bold;
     color: #009879;
 }
+
+.styled-table td {
+    padding: 8px;
+    border: 2px solid grey;
+}
+
+.styled-table th {
+    padding: 8px;
+    border: 2px solid grey;
+}

@@ -25,3 +25,42 @@
     padding: 3%;
   }
   
+  mat-card {
+    padding: 5%;
+  }
+
+  .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 100%;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+
+/* http://nodeangular-env.eba-wnqdnhsn.us-east-1.elasticbeanstalk.com/results?minprice=12&maxprice=4242424&onebed=&twobed=true&threebed=&fourbed=&fiveplusbed=&mintemp=-35&maxtemp=100 */

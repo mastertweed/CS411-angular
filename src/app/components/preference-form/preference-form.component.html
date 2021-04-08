@@ -1,4 +1,4 @@
-<mat-card style="padding: 5%;">
+<mat-card>
   <h2 class="h2-title">Preference</h2>
   <form class="example-form" (submit)="onSubmitPrefer(preferForm)" #preferForm="ngForm">    
     
@@ -121,4 +121,33 @@
     <button mat-raised-button type="submit" color="primary" style="margin-left: 30%; width: 40%;">Submit</button>
 
   </form>
+</mat-card>
+
+<!-- TEMP to show results -->
+<mat-card style="margin-top: 15px;">
+  <div>
+    <h2 style="margin-top: 5px;">Results</h2>
+    (only top 100)
+  </div>
+  
+  <table class="styled-table">
+    <thead>
+        <tr>
+            <th>city</th>
+            <th>state</th>
+            <th>metro</th>
+            <th>county</th>
+            <th>price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let result of results | slice:0:100">
+            <td>{{result.city}}</td>
+            <td>{{result.state}}</td>
+            <td>{{result.metro}}</td>
+            <td>{{result.county}}</td>
+            <td>{{result.price}}</td>
+        </tr>
+    </tbody>
+  </table>
 </mat-card>

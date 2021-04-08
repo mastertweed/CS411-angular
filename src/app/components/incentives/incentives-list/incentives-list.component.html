@@ -1,5 +1,8 @@
-<h2>Add New Incentive</h2>
+<mat-card style="text-align: center;">
+    <h2>Incentives</h2>
+</mat-card>
 
+<h2>Add New Incentive</h2>
 <form #addincentive = "ngForm" (ngSubmit) = "ngOnAdd(addincentive.value)" >
   <input type = "text" name = "city" placeholder = "city" ngModel>
   <br/>
@@ -13,7 +16,6 @@
 </form>
 
 <h2>Remove Incentive</h2>
-
 <form #deleteincentive = "ngForm" (ngSubmit) = "ngOnDelete(deleteincentive.value)" >
   <input type = "text" name = "city" placeholder = "city" ngModel>
   <br/>
@@ -35,7 +37,7 @@
         <tr *ngFor="let incentive of incentives">
             <td>{{incentive.State}}</td>
             <td>{{incentive.City}}</td>
-            <td>{{incentive.description}}</td>
+            <td style="width: 500px;">{{incentive.description}}</td>
             <td>{{incentive.requirements}}</td>
         </tr>
     </tbody>
