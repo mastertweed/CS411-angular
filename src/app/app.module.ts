@@ -30,8 +30,6 @@ import { WeatherListComponent } from './components/weather/weather-list/weather-
 import { UserInformationListComponent } from './components/user-information/user-information-list/user-information-list.component';
 import { UserInformationCreateComponent } from './components/user-information/user-information-create/user-information-create.component';
 
->>>>>>> fc1ef5a488785e6d7393c0241cedd09575fe8a78
-
 @NgModule({
   declarations: [
     AppComponent,

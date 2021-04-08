@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: "preference", component: PreferenceFormComponent },
   { path: "zipcode", component: ZipcodeListComponent },
   { path: "census", component: CensusListComponent },
-  { path: "weather", component: WeatherListComponent }
+  { path: "weather", component: WeatherListComponent },
   { path: "user-info", component: UserInformationCreateComponent },
   { path: "login", component: LoginComponent }
 ];
