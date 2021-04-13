@@ -1,7 +1,5 @@
 export interface City {
-    city_id: number;
-    city_name: string;
-    median_age: number;
+    city: number;
+    state: string;
     population: number;
-    median_income: number;
 }

@@ -1,0 +1,16 @@
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>city</th>
+            <th>state</th>
+            <th>population</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let city of cities">
+            <td>{{city.city}}</td>
+            <td>{{city.state}}</td>
+            <td>{{city.population}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -12,7 +12,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +29,10 @@ import { CensusListComponent } from './components/census/census-list/census-list
 import { WeatherListComponent } from './components/weather/weather-list/weather-list.component';
 import { UserInformationListComponent } from './components/user-information/user-information-list/user-information-list.component';
 import { UserInformationCreateComponent } from './components/user-information/user-information-create/user-information-create.component';
+import { ResultsListComponent } from './components/results/results-list/results-list.component';
+import { ResultsMapComponent } from './components/results/results-map/results-map.component';
+import { ResultsDetailComponent } from './components/results/results-detail/results-detail.component';
+import { ResultsPageComponent } from './components/results/results-page/results-page.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +49,11 @@ import { UserInformationCreateComponent } from './components/user-information/us
     CensusListComponent,
     WeatherListComponent,
     UserInformationListComponent,
-    UserInformationCreateComponent
+    UserInformationCreateComponent,
+    ResultsListComponent,
+    ResultsMapComponent,
+    ResultsDetailComponent,
+    ResultsPageComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +68,7 @@ import { UserInformationCreateComponent } from './components/user-information/us
     MatButtonModule,
     MatSliderModule,
     MatCheckboxModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

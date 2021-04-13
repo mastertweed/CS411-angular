@@ -12,6 +12,7 @@ import { ZipcodeListComponent } from "./components/zipcodes/zipcode-list/zipcode
 import { CensusListComponent } from "./components/census/census-list/census-list.component";
 import { WeatherListComponent } from "./components/weather/weather-list/weather-list.component";
 import { UserInformationCreateComponent } from "./components/user-information/user-information-create/user-information-create.component";
+import { ResultsPageComponent } from "./components/results/results-page/results-page.component";
 
 const routes: Routes = [
   { path: "", component: UserListComponent },
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: "census", component: CensusListComponent },
   { path: "weather", component: WeatherListComponent },
   { path: "user-info", component: UserInformationCreateComponent },
-  { path: "login", component: LoginComponent }
+  { path: "login", component: LoginComponent },
+  { path: "results", component: ResultsPageComponent }
 ];
 
 @NgModule({
