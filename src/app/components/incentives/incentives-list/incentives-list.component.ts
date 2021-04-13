@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from "rxjs";
+import { Observable } from 'rxjs';
 
 import { Incentives } from "../../../Shared/Models/incentives.model";
 import { IncentivesService } from "../../../core/Services/incentives.service";
@@ -30,8 +31,17 @@ export class IncentivesListComponent implements OnInit, OnDestroy {
 
   ngOnDelete(form) {
     this.incentivesService.deleteIncentive(form.state, form.city).subscribe(res => {
+		this.ngOnInit()
 	  });
   }
+
+
+  ngOnUpdate(form) {
+    this.incentivesService.updateIncentive(form.state, form.city, form.description, form.requirements).subscribe((response) => {
+		this.ngOnInit()
+          });
+  }
+
 
   ngOnDestroy() {
     this.incentivesSub.unsubscribe();

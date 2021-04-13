@@ -2,8 +2,10 @@
     <h2>Incentives</h2>
 </mat-card>
 
-<h2>Add New Incentive</h2>
+<div style="display: flex; justify-content: space-around;">
+
 <form #addincentive = "ngForm" (ngSubmit) = "ngOnAdd(addincentive.value)" >
+  <h3>Add New Incentive</h3>
   <input type = "text" name = "city" placeholder = "city" ngModel>
   <br/>
   <input type = "text" name = "state" placeholder = "state" ngModel>
@@ -14,15 +16,33 @@
   <br/>
   <input type = "submit" value = "Create Incentive">
 </form>
-
-<h2>Remove Incentive</h2>
+<br>
 <form #deleteincentive = "ngForm" (ngSubmit) = "ngOnDelete(deleteincentive.value)" >
+  <h3>Remove Incentive</h3>
   <input type = "text" name = "city" placeholder = "city" ngModel>
   <br/>
   <input type = "text" name = "state" placeholder = "state" ngModel>
   <br/>
   <input type = "submit" value = "Delete Incentive">
 </form>
+<br>
+<form #updateincentive = "ngForm" (ngSubmit) = "ngOnUpdate(updateincentive.value)" >
+  <h3>Update Incentive</h3>
+  <h4>Choose city and state for incentive to be updated:</h4>
+  <input type = "text" name = "city" placeholder = "city" ngModel>
+  <br/>
+  <input type = "text" name = "state" placeholder = "state" ngModel>
+  <br/>
+  <h4>Enter new data for above incentive::</h4>
+  <input type = "text" name = "description" placeholder = "new description" ngModel>
+  <br/>
+  <input type = "text" name = "requirements" placeholder = "new requirements" ngModel>
+  <br/>
+  <input type = "submit" value = "Update Incentive">
+</form>
+
+</div>
+
 
 <table class="styled-table">
     <thead>

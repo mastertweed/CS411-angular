@@ -54,11 +54,22 @@ export class IncentivesService {
     }
  
     deleteIncentive(state: string, city:string) : Observable<any> {
-       const query = { del:1, State: state, City: city };
+       const query = { mode:1, State: state, City: city };
        const headers = { 'content-type': 'application/json'};
        const body = JSON.stringify(query);
 
        return this.http.post(environment.apiURL + "/incentives", body, {'headers':headers});
     }
+    
+    updateIncentive(state: string, city: string, des: string, req: string) : Observable<any> {	
+       const query = { mode:2, State: state, City: city, description: des, requirements: req };
+       const headers = { 'content-type': 'application/json'};
+       const body = JSON.stringify(query);
+  
+       return this.http.post(environment.apiURL + "/incentives", body, {'headers':headers});
 
+//       this.http.post<Incentives[]>(environment.apiURL + "/incentives", body, {'headers':headers})
+//       this.incentives.push(incentive);
+//       this.incentivesUpdated.next([...this.incentives]);                  
+    }
 }
