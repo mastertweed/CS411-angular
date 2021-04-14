@@ -1,16 +1,14 @@
 <table class="styled-table">
     <thead>
         <tr>
-            <th>city</th>
-            <th>state</th>
-            <th>population</th>
+            <th>City</th>
+            <th>State</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let city of cities">
-            <td>{{city.city}}</td>
-            <td>{{city.state}}</td>
-            <td>{{city.population}}</td>
+        <tr *ngFor="let zip of zipcodes">
+            <td>{{zip.primary_city}}</td>
+            <td>{{zip.state}}</td>
         </tr>
     </tbody>
 </table>

@@ -11,13 +11,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from "./components/header/header.component";
-import { CityListComponent } from './components/city/city-list/city-list.component';
 import { HousingListComponent } from './components/housing/housing-list/housing-list.component';
 import { IncentivesListComponent } from './components/incentives/incentives-list/incentives-list.component';
 import { PreferenceFormComponent } from './components/preference-form/preference-form.component';
@@ -38,7 +39,6 @@ import { ResultsPageComponent } from './components/results/results-page/results-
   declarations: [
     AppComponent,
     HeaderComponent,
-    CityListComponent,
     HousingListComponent,
     IncentivesListComponent,
     PreferenceFormComponent,
@@ -69,6 +69,7 @@ import { ResultsPageComponent } from './components/results/results-page/results-
     MatSliderModule,
     MatCheckboxModule,
     MatGridListModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

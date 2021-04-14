@@ -8,6 +8,9 @@ import { environment } from "../../../environments/environment";
 
 @Injectable({providedIn: 'root'})
 export class ZipCodesService {
+    private allzipcodes: ZipCodes[] = [];
+    private allzipcodesUpdated = new Subject<ZipCodes[]>();
+
     private zipcodes: ZipCodes[] = [];
     private zipcodesUpdated = new Subject<ZipCodes[]>();
 
@@ -16,12 +19,25 @@ export class ZipCodesService {
     getZipCodes() {
         this.http.get<ZipCodes[]>(environment.apiURL + "/zipcodes")
         .subscribe((userData) => {
+            this.allzipcodes = userData;
+            this.allzipcodesUpdated.next([...this.allzipcodes]);
+        });
+    }
+
+    getZipCodesUpdateListener() {
+        return this.allzipcodesUpdated.asObservable();
+    }
+
+    getZipCodesByZip(zip: number) {
+        this.http.get<ZipCodes[]>(environment.apiURL + "/zipcodes/" + zip)
+        .subscribe((userData) => {
             this.zipcodes = userData;
             this.zipcodesUpdated.next([...this.zipcodes]);
         });
     }
 
-    getZipCodesUpdateListener() {
+    getZipCodesByZipUpdateListener() {
         return this.zipcodesUpdated.asObservable();
     }
+
 }

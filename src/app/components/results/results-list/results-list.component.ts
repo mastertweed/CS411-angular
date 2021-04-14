@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { City } from "../../../Shared/Models/city.model";
+import { Subscription } from "rxjs";
 
+import { ZipCodes } from "../../../Shared/Models/zipcodes.model";
+import { ZipCodesService } from "../../../core/Services/zipcodes.service";
 
 @Component({
   selector: 'app-results-list',
@@ -9,11 +11,21 @@ import { City } from "../../../Shared/Models/city.model";
 })
 export class ResultsListComponent implements OnInit {
 
-  cities: City[] = [];
+  zipcodes: ZipCodes[] = [];
+  private zipcodeSub: Subscription;
 
-  constructor() { }
+  constructor(public zipcodesService: ZipCodesService) {}
 
-  ngOnInit(): void {
+  ngOnInit() { 
+    // this.zipcodesService.getZipCodesByZip(1534);
+    this.zipcodeSub = this.zipcodesService.getZipCodesByZipUpdateListener()
+        .subscribe((zipcodes: ZipCodes[]) => {
+          this.zipcodes.push(zipcodes[0]);
+        });
+  }
+
+  ngOnDestroy() {
+      this.zipcodeSub.unsubscribe();
   }
 
 }

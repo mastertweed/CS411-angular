@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CityListComponent } from "../app/components/city/city-list/city-list.component";
 import { UserListComponent } from './components/users/user-list/user-list.component';
 import { IncentivesListComponent } from "./components/incentives/incentives-list/incentives-list.component";
 import { HousingListComponent } from "./components/housing/housing-list/housing-list.component";
@@ -17,7 +16,6 @@ import { ResultsPageComponent } from "./components/results/results-page/results-
 const routes: Routes = [
   { path: "", component: UserListComponent },
   { path: "user", component: UserListComponent },
-  { path: "city", component: CityListComponent },
   { path: "incentives", component: IncentivesListComponent },
   { path: "housing", component: HousingListComponent },
   { path: "prefers", component: PrefersListComponent },

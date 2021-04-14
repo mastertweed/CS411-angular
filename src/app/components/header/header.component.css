@@ -1,12 +1,9 @@
 /* unvisited link */
 a {
-    color: ligh;
+    color: white;
     margin-left: 20px;
     font-size: large;
-}
-
-mat-toolbar {
-    background-color: lightblue;
+    text-decoration: none;
 }
 
 /* mouse over link */
