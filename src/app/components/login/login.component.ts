@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   signupEmail = "";
   signupPassword = "";
 
-  constructor() { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
   }
@@ -27,6 +28,8 @@ export class LoginComponent implements OnInit {
     }
     this.loginEmail = form.value.loginEmail
     this.loginPassword = form.value.loginPassword
+
+    this.router.navigate(['/user-info']);
   }
 
   onSubmitSignup(form: NgForm) {
@@ -36,6 +39,12 @@ export class LoginComponent implements OnInit {
     }
     this.signupEmail = form.value.signupEmail
     this.signupPassword = form.value.signupPassword
+
+    this.router.navigate(['/user-info']);
+  }
+
+  onGuestClick() {
+    this.router.navigate(['/preference']);
   }
   
 

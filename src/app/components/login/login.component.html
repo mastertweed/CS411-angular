@@ -1,52 +1,65 @@
-<mat-card style="margin-top: 10px; width: 400px;">
-
-    <div style="text-align: center;">
-        <h1>Login</h1>
-    </div>
+<div class="bg"></div>
+<div class="bg-overlay">
+    <div style="text-align: center; align-items: center;"> 
+        <mat-card style="width: 400px; margin: 0 auto; background-color: rgba(255, 255, 255, 0.938);">
     
-    <mat-tab-group mat-align-tabs="center">
-        <mat-tab label="Sign In">
-            <form #loginForm="ngForm" (submit)="onSubmitLogin(loginForm)">
-                <mat-form-field style=" margin-top: 20px;">
-                    <mat-label>Email</mat-label>
-                    <input matInput type="email" name="loginEmail" ngModel required>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                    <mat-label>Password</mat-label>
-                    <input matInput type="password"  name="loginPassword" ngModel required>
-                </mat-form-field>
-                <br>
-                <button 
-                    mat-raised-button 
-                    type="submit"
-                    style="width: 80%; margin-left: 10%; margin-top: 20px;" 
-                    color="primary"
-                >Sign In
-                </button>
-            </form>
-        </mat-tab>
-
-        <mat-tab label="Sign Up">
-            <form #signupForm="ngForm" (submit)="onSubmitSignup(signupForm)">
-                <mat-form-field style="margin-top: 20px;">
-                    <mat-label>Email</mat-label>
-                    <input matInput type="email" name="signupEmail" ngModel required>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                    <mat-label>Password</mat-label>
-                    <input matInput type="password" name="signupPassword" ngModel required>
-                </mat-form-field>
-                <br>
-                <button 
-                    mat-raised-button 
-                    type="submit"
-                    style="width: 80%; margin-left: 10%; margin-top: 20px;" 
-                    color="primary"
-                    >Sign Up
-                </button>
-            </form>
-        </mat-tab>
-    </mat-tab-group>
-</mat-card>
+            <div style="text-align: center;">
+                <h1>Signup to create free account</h1>
+            </div>
+            
+            <mat-tab-group mat-align-tabs="center">
+                <mat-tab label="Sign Up">
+                    <form #signupForm="ngForm" (submit)="onSubmitSignup(signupForm)">
+                        <mat-form-field style="margin-top: 20px;">
+                            <mat-label>Email</mat-label>
+                            <input matInput type="email" name="signupEmail" ngModel required>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field>
+                            <mat-label>Password</mat-label>
+                            <input matInput type="password" name="signupPassword" ngModel required>
+                        </mat-form-field>
+                        <br>
+                        <button 
+                            mat-raised-button 
+                            type="submit"
+                            style="width: 60%; margin-top: 20px;" 
+                            color="primary"
+                            >Sign Up
+                        </button>
+                    </form>
+                </mat-tab>
+                
+                <mat-tab label="Login">
+                    <form #loginForm="ngForm" (submit)="onSubmitLogin(loginForm)">
+                        <mat-form-field style=" margin-top: 20px;">
+                            <mat-label>Email</mat-label>
+                            <input matInput type="email" name="loginEmail" ngModel required>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field>
+                            <mat-label>Password</mat-label>
+                            <input matInput type="password"  name="loginPassword" ngModel required>
+                        </mat-form-field>
+                        <br>
+                        <button 
+                            mat-raised-button 
+                            type="submit"
+                            style="width: 60%; margin-top: 20px;" 
+                            color="primary"
+                        >Sign In
+                        </button>
+                    </form>
+                </mat-tab>
+        
+            </mat-tab-group>
+            <button 
+                mat-button 
+                color="primary" 
+                style="margin-top: 10px;"
+                (click)="onGuestClick()"
+                >Contiue as Guest
+            </button>
+        </mat-card>
+    </div>
+</div>

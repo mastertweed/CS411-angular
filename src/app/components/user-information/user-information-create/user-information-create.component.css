@@ -11,3 +11,29 @@
   td {
     padding-right: 8px;
   }
+
+  .bg {
+    /* background-image: url("../../../../assets/images/pexels-elia-clerici-912110.jpg"); */
+  
+    background-color: gray;
+
+    /* filter: blur(5px);
+    -webkit-filter: blur(5px); */
+
+    /* Full height */
+    height: 100vh;
+
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-overlay {
+    text-align: center;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -1,6 +1,6 @@
-.container {
-    display: flex; /* or inline-flex */
-    background-color: red;
+html, body {
+    margin:0;
+    padding:0;
 }
 
 .center {
@@ -34,14 +34,30 @@
 .full-width {
     width: 100%;
     margin: 0;
-    padding: 0;
     top: 0;
     left: 0;
 }
 
-footer {
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    line-height: 20px;
+/* Position text in the middle of the page/image */
+.bg-text {
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
 }
+
+#footer {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position:fixed;
+    text-align: center;
+    bottom:0;
+    left:0;
+}
+  

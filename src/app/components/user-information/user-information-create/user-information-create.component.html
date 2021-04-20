@@ -1,6 +1,9 @@
-<div>
-  <mat-card>
+<div class="bg"></div>
+
+<div class="bg-overlay">
+  <mat-card style="width: 500px; margin: 0 auto; background-color: rgba(255, 255, 255, 0.938);">
     <h2 style="text-align: center;">User Information</h2>
+    <p>User info is used in the selection process</p>
     <form class="example-form" (submit)="onSubmitUserInfo(userinfoForm)" #userinfoForm="ngForm">      
 
       <mat-form-field class="example-full-width">
@@ -44,11 +47,11 @@
         </mat-form-field>
       </div>
 
-      <button mat-raised-button color="primary" style="margin-left: 30%; margin-top: 20px; width: 40%;">Submit</button>
+      <button mat-raised-button color="primary" style="margin-top: 20px; width: 40%;">Submit</button>
 
     </form>
   </mat-card>   
 </div>
 
 
-<app-user-information-list></app-user-information-list>
+<!-- <app-user-information-list></app-user-information-list> -->

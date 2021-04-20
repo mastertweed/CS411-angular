@@ -1,7 +1,28 @@
-<div>
+<!-- <div>
   <app-header class="toolbar"></app-header>
 </div>
 
-<div style="margin-top: 100px;" class="full-width">
+<div style="margin-top: 70px;" class="full-width">
   <router-outlet></router-outlet>
-</div>
+</div> -->
+
+<header>
+  <app-header class="toolbar"></app-header>
+</header>
+
+<main style="width: 100%;">
+  <div style="margin-top: 50px;" class="full-width">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+
+<footer>
+  <div id="footer" class="mat-large">
+    <a routerLink="/zipcode" style="color: white;"> Zipcodes </a>
+    <a routerLink="/census" style="color: white;"> Census </a>
+    <a routerLink="/housing" style="color: white;"> Housing </a>
+    <a routerLink="/weather" style="color: white;"> Weather </a>
+    <a routerLink="/incentives"  style="color: white;"> Incentives </a>
+    <br>CS411 - Relocation Finder (2020)
+  </div>
+</footer>
