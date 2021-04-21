@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { Router } from '@angular/router';
 
+import { UserService } from "../../../core/Services/user.service";
+import { User } from "../../../Shared/Models/user.model";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,9 +19,15 @@ export class LoginComponent implements OnInit {
   signupEmail = "";
   signupPassword = "";
 
-  constructor(private router: Router) {}
+  user: User = {
+    email: "some", 
+    password: "some"
+}
+
+  constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit(): void {
+    this.user = this.userService.getCurrentUser()
   }
 
   onSubmitLogin(form: NgForm) {
@@ -29,7 +38,13 @@ export class LoginComponent implements OnInit {
     this.loginEmail = form.value.loginEmail
     this.loginPassword = form.value.loginPassword
 
-    this.router.navigate(['/user-info']);
+    console.log(this.loginEmail);
+
+    this.userService.getUserByEmail(this.loginEmail)
+
+    this.user = this.userService.getCurrentUser()
+
+    this.router.navigate(['/preference']);
   }
 
   onSubmitSignup(form: NgForm) {
@@ -39,6 +54,10 @@ export class LoginComponent implements OnInit {
     }
     this.signupEmail = form.value.signupEmail
     this.signupPassword = form.value.signupPassword
+
+    this.userService.addUser(this.signupEmail,this.signupPassword)
+
+    this.user = this.userService.getCurrentUser()
 
     this.router.navigate(['/user-info']);
   }

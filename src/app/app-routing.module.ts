@@ -6,7 +6,7 @@ import { IncentivesListComponent } from "./components/incentives/incentives-list
 import { HousingListComponent } from "./components/housing/housing-list/housing-list.component";
 import { PrefersListComponent } from "./components/prefers/prefers-list/prefers-list.component";
 import { PreferenceFormComponent } from "./components/preference-form/preference-form.component";
-import { LoginComponent } from "./components/login/login.component";
+import { LoginComponent } from "./components/authentication/login/login.component";
 import { ZipcodeListComponent } from "./components/zipcodes/zipcode-list/zipcode-list.component";
 import { CensusListComponent } from "./components/census/census-list/census-list.component";
 import { WeatherListComponent } from "./components/weather/weather-list/weather-list.component";
@@ -14,7 +14,7 @@ import { UserInformationCreateComponent } from "./components/user-information/us
 import { ResultsPageComponent } from "./components/results/results-page/results-page.component";
 
 const routes: Routes = [
-  { path: "", component: UserListComponent },
+  { path: "", component: LoginComponent },
   { path: "user", component: UserListComponent },
   { path: "incentives", component: IncentivesListComponent },
   { path: "housing", component: HousingListComponent },

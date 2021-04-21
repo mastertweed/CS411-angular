@@ -24,7 +24,7 @@ import { IncentivesListComponent } from './components/incentives/incentives-list
 import { PreferenceFormComponent } from './components/preference-form/preference-form.component';
 import { PrefersListComponent } from './components/prefers/prefers-list/prefers-list.component';
 import { UserListComponent } from './components/users/user-list/user-list.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/authentication/login/login.component';
 import { ZipcodeListComponent } from './components/zipcodes/zipcode-list/zipcode-list.component';
 import { CensusListComponent } from './components/census/census-list/census-list.component';
 import { WeatherListComponent } from './components/weather/weather-list/weather-list.component';

@@ -1,17 +1,28 @@
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { HttpClient } from '@angular/common/http';
+import { Router, UrlSerializer } from "@angular/router";
 
 import { User } from "../../Shared/Models/user.model";
 import { environment } from "../../../environments/environment";
+
 
 @Injectable({providedIn: 'root'})
 export class UserService {
     private users: User[] = [];
     private usersUpdated = new Subject<User[]>();
 
+    private currentUser: User = 
+    { 
+        email: "None",
+        password: "None"
+    };
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient,  private router: Router, private serializer: UrlSerializer) {}
+
+    getCurrentUser() {
+        return this.currentUser
+    }
 
     getUsers() {
         this.http.get<User[]>(environment.apiURL + "/users")
@@ -25,13 +36,29 @@ export class UserService {
         return this.usersUpdated.asObservable();
     }
 
-    addUser(email: number, password: string) {
-         const user: User = {
-             email: email, 
-             password: password
-            }
-         this.users.push(user);
+    getUserByEmail(email: string) {
 
-         this.usersUpdated.next([...this.users])
+        console.log(environment.apiURL + "/users/" + email);
+        this.http.get<User[]>(environment.apiURL + "/users/" + email)
+            .subscribe((user) => {
+                console.log(user[0]);
+                this.currentUser = user[0];
+            });
+    }
+
+    addUser(email: string, password: string) {
+        const user: User = {
+            email: email, 
+            password: password
+        }
+
+        this.http.post<{message: string}>(environment.apiURL + "/users", user)
+        .subscribe(response => {
+            console.log(response.message);
+            this.users.push(user);
+            this.usersUpdated.next([...this.users])
+            this.currentUser = user
+        });
+         
     }
 }

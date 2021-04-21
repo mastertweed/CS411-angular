@@ -83,8 +83,6 @@ export class PreferenceService {
 
         console.log(this.serializer.serialize(tree)); // "/?foo=a&bar=42"
 
-        console.log(environment.apiURL)
-
         this.http.get<Housing[]>(environment.apiURL + this.serializer.serialize(tree))
             .subscribe(resultsData => {
                 this.results = resultsData;
