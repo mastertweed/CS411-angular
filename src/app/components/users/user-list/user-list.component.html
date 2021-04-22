@@ -1,15 +1,16 @@
-
-<table class="styled-table">
-    <thead>
-        <tr>
-            <th>Email</th>
-            <th>Password</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let user of users">
-            <td>{{user.email}}</td>
-            <td>{{user.password}}</td>
-        </tr>
-    </tbody>
-</table>
+<div style="margin-top: 80px;">
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.email}}</td>
+                <td>{{user.password}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

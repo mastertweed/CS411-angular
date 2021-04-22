@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { UserService } from "../../../core/Services/user.service";
 import { User } from "../../../Shared/Models/user.model";
+import { AuthenticationService } from "../authentication.service";
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,9 @@ export class LoginComponent implements OnInit {
     password: "some"
 }
 
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(private router: Router, 
+    private userService: UserService, 
+    private authenticationService: AuthenticationService) {}
 
   ngOnInit(): void {
     this.user = this.userService.getCurrentUser()
@@ -39,12 +42,13 @@ export class LoginComponent implements OnInit {
     this.loginPassword = form.value.loginPassword
 
     console.log(this.loginEmail);
+    this.authenticationService.login(this.loginEmail, this.loginPassword)
 
-    this.userService.getUserByEmail(this.loginEmail)
+    // this.userService.getUserByEmail(this.loginEmail)
 
-    this.user = this.userService.getCurrentUser()
+    // this.user = this.userService.getCurrentUser()
 
-    this.router.navigate(['/preference']);
+    // this.router.navigate(['/preference']);
   }
 
   onSubmitSignup(form: NgForm) {

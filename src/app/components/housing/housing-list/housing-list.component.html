@@ -1,20 +1,22 @@
-<table class="styled-table">
-    <thead>
-        <tr>
-            <th>city</th>
-            <th>state</th>
-            <th>metro</th>
-            <th>county</th>
-            <th>price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let housing of housings">
-            <td>{{housing.city}}</td>
-            <td>{{housing.state}}</td>
-            <td>{{housing.metro}}</td>
-            <td>{{housing.county}}</td>
-            <td>{{housing.price}}</td>
-        </tr>
-    </tbody>
-</table>
+<div style="margin-top: 80px;">
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>city</th>
+                <th>state</th>
+                <th>metro</th>
+                <th>county</th>
+                <th>price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let housing of housings">
+                <td>{{housing.city}}</td>
+                <td>{{housing.state}}</td>
+                <td>{{housing.metro}}</td>
+                <td>{{housing.county}}</td>
+                <td>{{housing.price}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

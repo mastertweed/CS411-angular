@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { FormsModule } from "@angular/forms";
 
@@ -34,6 +34,7 @@ import { ResultsListComponent } from './components/results/results-list/results-
 import { ResultsMapComponent } from './components/results/results-map/results-map.component';
 import { ResultsDetailComponent } from './components/results/results-detail/results-detail.component';
 import { ResultsPageComponent } from './components/results/results-page/results-page.component';
+import { AuthInterceptor } from './components/authentication/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,7 @@ import { ResultsPageComponent } from './components/results/results-page/results-
     MatGridListModule,
     MatExpansionModule,
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
