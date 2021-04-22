@@ -11,3 +11,17 @@ a:hover {
     color: rgb(141, 255, 147);
 }
 
+.flex-container {
+    display: flex;
+    width: 100%;
+}
+
+.flex-item-left {
+    text-align: center;
+    margin-left: 0;
+}
+
+.flex-item-right {
+    margin: auto;
+    margin-right: 0;
+}

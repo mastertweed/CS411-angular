@@ -42,13 +42,18 @@ export class LoginComponent implements OnInit {
     this.loginPassword = form.value.loginPassword
 
     console.log(this.loginEmail);
+
+    // Verify email and password exist in database, and recieve auth token
     this.authenticationService.login(this.loginEmail, this.loginPassword)
 
-    // this.userService.getUserByEmail(this.loginEmail)
+    // Get user data after verfification
+    this.userService.getUserByEmail(this.loginEmail)
 
-    // this.user = this.userService.getCurrentUser()
+    // Save user locally
+    this.user = this.userService.getCurrentUser()
 
-    // this.router.navigate(['/preference']);
+    // Navigate to the preference page
+    this.router.navigate(['/preference']);
   }
 
   onSubmitSignup(form: NgForm) {
@@ -59,10 +64,16 @@ export class LoginComponent implements OnInit {
     this.signupEmail = form.value.signupEmail
     this.signupPassword = form.value.signupPassword
 
+    // Attempt to add user to the database
     this.userService.addUser(this.signupEmail,this.signupPassword)
+    
+    // Verify email and password exist in database, and recieve auth token
+    this.authenticationService.login(this.signupEmail, this.signupPassword)
 
+    // Save user locally
     this.user = this.userService.getCurrentUser()
 
+    // Navigate to the user-info page
     this.router.navigate(['/user-info']);
   }
 

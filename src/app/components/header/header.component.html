@@ -1,12 +1,23 @@
 <mat-toolbar color="primary"> 
-    <div style="display: flex;width: 50%;">
-        <a routerLink="/login"><h2>CS411 - Relocation Finder</h2></a>
+    <div class="flex-container">
+        <div class="flex-item-left">
+            <a routerLink="/login"><h2>CS411 - Relocation Finder</h2></a>
+        </div>
+        <div class="flex-item-right">
+            <button 
+                mat-stroked-button 
+                [matMenuTriggerFor]="menu" 
+                style="background-color: azure; color: black;"
+                >Options
+            </button>
+            <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/login">Login</button>
+            <button mat-menu-item routerLink="/user-info">User Info</button>
+            <button mat-menu-item routerLink="/preference">Preference</button>
+            <button mat-menu-item routerLink="/results">Results</button>
+            </mat-menu>
+    
+        </div>
     </div>
-    <div style="display: flex;width: 50%;">
-        <!-- <a routerLink="/prefers"> prefers </a> -->
-        <a routerLink="/preference"> preference </a>
-        <a routerLink="/results"> results </a>
-        <a routerLink="/user-info"> user-info </a>
-        <a routerLink="/login"> Login/Logout </a>
-    </div>
+
 </mat-toolbar>

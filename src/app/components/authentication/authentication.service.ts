@@ -5,12 +5,14 @@ import { Router, UrlSerializer } from "@angular/router";
 import { User } from "../../Shared/Models/user.model";
 import { environment } from "../../../environments/environment";
 
+import { UserService } from "../../core/Services/user.service";
+
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
 
     private authToken: string;
 
-    constructor(private http: HttpClient, private router: Router, private serializer: UrlSerializer) {}
+    constructor(private http: HttpClient, private router: Router, private serializer: UrlSerializer, private userSevice: UserService) {}
 
     login(email: string, password: string) {
 
@@ -22,7 +24,7 @@ export class AuthenticationService {
         });
 
 
-        this.http.get<{accessToken}>(environment.apiURL + this.serializer.serialize(tree))
+        this.http.get<{accessToken: string}>(environment.apiURL + this.serializer.serialize(tree))
             .subscribe(response => {
                 console.log(response);
                 this.authToken = response.accessToken
@@ -32,4 +34,5 @@ export class AuthenticationService {
     getToken() {
         return this.authToken
     }
+
 }

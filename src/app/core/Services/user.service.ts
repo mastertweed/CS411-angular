@@ -24,6 +24,10 @@ export class UserService {
         return this.currentUser
     }
 
+    setCurrentUser(user: User) {
+        this.currentUser = user;
+    }
+
     getUsers() {
         this.http.get<User[]>(environment.apiURL + "/users")
         .subscribe((userData) => {
@@ -58,6 +62,7 @@ export class UserService {
             this.users.push(user);
             this.usersUpdated.next([...this.users])
             this.currentUser = user
+            console.log(this.currentUser)
         });
          
     }

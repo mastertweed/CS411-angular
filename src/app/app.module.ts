@@ -14,6 +14,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -71,6 +73,7 @@ import { AuthInterceptor } from './components/authentication/auth-interceptor';
     MatCheckboxModule,
     MatGridListModule,
     MatExpansionModule,
+    MatMenuModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
