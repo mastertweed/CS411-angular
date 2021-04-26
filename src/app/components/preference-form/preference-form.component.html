@@ -137,20 +137,29 @@
     <table class="styled-table">
       <thead>
           <tr>
-              <th>city</th>
-              <th>state</th>
-              <th>metro</th>
-              <th>county</th>
-              <th>price</th>
+              <th>City</th>
+              <th>State</th>
+              <th>County</th>
+              <th>House type</th>
+              <th>Mean Earning</th>
+              <th>Age</th>
+              <th>Income</th>
+              <th>Price</th>
+              <th>Score</th>
+
           </tr>
       </thead>
       <tbody>
           <tr *ngFor="let result of results | slice:0:100">
               <td>{{result.city}}</td>
               <td>{{result.state}}</td>
-              <td>{{result.metro}}</td>
               <td>{{result.county}}</td>
+              <td>{{result.housetype}}</td>
+              <td>{{result.mean_earnings}}</td>
+              <td>{{result.median_age}}</td>
+              <td>{{result.per_capita_income}}</td>
               <td>{{result.price}}</td>
+              <td>{{result.score}}</td>
           </tr>
       </tbody>
     </table>

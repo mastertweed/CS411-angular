@@ -91,4 +91,9 @@ export class PreferenceService {
     getResultsUpdateListener() {
         return this.resultsUpdated.asObservable();
     }
+
+    getResults() {
+        console.log(this.results[0])
+        return this.results
+    }
 }

@@ -1,9 +1,9 @@
 <mat-accordion>
 
-    <mat-expansion-panel *ngFor="let zip of zipcodes" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel *ngFor="let result of results | slice:0:10" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{zip.primary_city}}, {{zip.state}}
+          {{result.city}}, {{result.state}}, {{result.county}}
         </mat-panel-title>
         <mat-panel-description>
           Currently I am {{panelOpenState ? 'open' : 'closed'}}

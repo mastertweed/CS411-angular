@@ -1,55 +1,60 @@
 <div class="bg"></div>
 
 <div class="bg-overlay">
-  <mat-card style="width: 500px; margin: 0 auto; background-color: rgba(255, 255, 255, 0.938);">
-    <h2 style="text-align: center;">User Information</h2>
-    <p>User info is used in the selection process</p>
-    <form class="example-form" (submit)="onSubmitUserInfo(userinfoForm)" #userinfoForm="ngForm">      
-
-      <mat-form-field class="example-full-width">
-        <mat-label>Email</mat-label>
-        <input matInput name="email" ngModel required>
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <mat-label>First name</mat-label>
-        <input matInput name="firstname" ngModel required>
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <mat-label>Last Name</mat-label>
-        <input matInput name="lastname" ngModel required>
-      </mat-form-field>
-    
-      <mat-form-field class="example-full-width">
-        <mat-label>City</mat-label>
-        <input matInput placeholder="Ex. San Francisco" name="city" ngModel required>
-      </mat-form-field>
-
-      <div style="display: flex;">
+  <mat-card style="width: 350px; margin: 0 auto; background-color: rgba(255, 255, 255, 0.9);">
+    <div style="margin: 3%">
+      <h2 style="text-align: center;">User Information</h2>
+      <p>User info is used in the selection process</p>
+      <form class="example-form" (submit)="onSubmitUserInfo(userinfoForm)" #userinfoForm="ngForm">      
+  
         <mat-form-field class="example-full-width">
-          <mat-label>State</mat-label>
-          <input matInput placeholder="Ex. California" name="state" ngModel required>
+          <mat-label>Email</mat-label>
+          <input matInput name="email" ngModel required>
         </mat-form-field>
-
-        <mat-form-field class="example-full-width" style="margin-left: 5%;">
-          <mat-label>Zip Code</mat-label>
-          <input 
-            matInput 
-            #zipCode 
-            maxlength="5" 
-            placeholder="Ex. 94105" 
-            name="zipcode" 
-            ngModel 
-            required
-          >
-          <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
+  
+        <mat-form-field class="example-full-width">
+          <mat-label>First name</mat-label>
+          <input matInput name="firstname" ngModel required>
         </mat-form-field>
-      </div>
+  
+        <mat-form-field class="example-full-width">
+          <mat-label>Last Name</mat-label>
+          <input matInput name="lastname" ngModel required>
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width">
+          <mat-label>City</mat-label>
+          <input matInput placeholder="Ex. San Francisco" name="city" ngModel required>
+        </mat-form-field>
+  
+        <div style="display: flex;">
+          <mat-form-field class="example-full-width">
+            <mat-label>State</mat-label>
+            <input matInput placeholder="Ex. California" name="state" ngModel required>
+          </mat-form-field>
+  
+          <mat-form-field style="margin-left: 5%; width: 120px;">
+            <mat-label>Zip Code</mat-label>
+            <input 
+              matInput 
+              #zipCode 
+              maxlength="5" 
+              placeholder="Ex. 94105" 
+              name="zipcode" 
+              ngModel 
+              required
+            >
+            <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
+          </mat-form-field>
+        </div>
+  
+        <button mat-raised-button color="primary" style="margin-top: 20px; width: 40%;">Submit</button>
+  
+      </form>
+    </div>
 
-      <button mat-raised-button color="primary" style="margin-top: 20px; width: 40%;">Submit</button>
+  </mat-card>
 
-    </form>
-  </mat-card>   
   <app-user-information-list></app-user-information-list>
+  
 </div>

@@ -3,12 +3,14 @@
         <tr>
             <th>City</th>
             <th>State</th>
+            <th>County</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let zip of zipcodes">
-            <td>{{zip.primary_city}}</td>
-            <td>{{zip.state}}</td>
+        <tr *ngFor="let result of results | slice:0:10">
+            <td>{{result.city}}</td>
+            <td>{{result.state}}</td>
+            <td>{{result.county}}</td>
         </tr>
     </tbody>
 </table>
