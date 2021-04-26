@@ -47,12 +47,13 @@ export class PreferenceFormComponent implements OnInit, OnDestroy {
     this.minCostValue = form.value.minCost
     this.maxCostValue = form.value.maxCost
     this.avgAge = form.value.avgAge
-    this.bedrooms1 = form.value.checkbox1
-    this.bedrooms2 = form.value.checkbox2
-    this.bedrooms3 = form.value.checkbox3
-    this.bedrooms4 = form.value.checkbox4
-    this.bedrooms5 = form.value.checkbox5
-    this.singlefamily = form.value.singlefamily
+    if (form.value.checkbox1 == true) { this.bedrooms1 = 1 }
+    if (form.value.checkbox2 == true) { this.bedrooms2 = 1 }
+    if (form.value.checkbox3 == true) { this.bedrooms3 = 1 }
+    if (form.value.checkbox4 == true) { this.bedrooms4 = 1 }
+    if (form.value.checkbox5 == true) { this.bedrooms5 = 1 }
+    if (form.value.singlefamily == true) { this.singlefamily = 1 }
+
     this.minTempValue = form.value.minTemp
     this.maxTempValue = form.value.maxTemp
 
