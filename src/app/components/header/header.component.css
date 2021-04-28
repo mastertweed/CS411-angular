@@ -25,3 +25,13 @@ a:hover {
     margin: auto;
     margin-right: 0;
 }
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.user {
+    background-color: wheat; 
+    border: 2px solid black; 
+    padding: 5px; color: black;
+}

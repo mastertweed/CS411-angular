@@ -12,20 +12,13 @@ export class UserService {
     private users: User[] = [];
     private usersUpdated = new Subject<User[]>();
 
-    private currentUser: User = 
-    { 
-        email: "None",
-        password: "None"
-    };
+    private currentUser: User;
+    private currentUserUpdated = new Subject<User>();
 
     constructor(private http: HttpClient,  private router: Router, private serializer: UrlSerializer) {}
 
     getCurrentUser() {
         return this.currentUser
-    }
-
-    setCurrentUser(user: User) {
-        this.currentUser = user;
     }
 
     getUsers() {
@@ -47,7 +40,12 @@ export class UserService {
             .subscribe((user) => {
                 console.log(user[0]);
                 this.currentUser = user[0];
+                this.currentUserUpdated.next(this.currentUser);
             });
+    }
+
+    getCurrentUserUpdateListener() {
+        return this.currentUserUpdated.asObservable();
     }
 
     addUser(email: string, password: string) {
@@ -59,11 +57,15 @@ export class UserService {
         this.http.post<{message: string}>(environment.apiURL + "/users", user)
         .subscribe(response => {
             console.log(response.message);
+
+            // Add new user to list
             this.users.push(user);
             this.usersUpdated.next([...this.users])
-            this.currentUser = user
-            console.log(this.currentUser)
+
+            // Save new user as current user
+            this.currentUser = user;
+            this.currentUserUpdated.next(this.currentUser)
         });
-         
     }
+
 }

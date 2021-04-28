@@ -7,25 +7,46 @@ import { environment } from "../../../environments/environment";
 
 @Injectable({providedIn: 'root'})
 export class UserInfoService {
-    private userinfo: UserInfo[] = [];
-    private userinfoUpdated = new Subject<UserInfo[]>();
+    private usersinfo: UserInfo[] = [];
+    private usersinfoUpdated = new Subject<UserInfo[]>();
+
+    private userinfo: UserInfo;
+    private userinfoUpdated = new Subject<UserInfo>();
 
 
     constructor(private http: HttpClient) {}
 
+    // All users info
     getUserInfo() {
         this.http.get<UserInfo[]>(environment.apiURL + "/userinfo")
-        .subscribe((userinfoData) => {
-            this.userinfo = userinfoData;
-            this.userinfoUpdated.next([...this.userinfo]);
+        .subscribe((usersinfoData) => {
+            this.usersinfo = usersinfoData;
+            this.usersinfoUpdated.next([...this.usersinfo]);
         });
     }
 
     getUserInfoUpdateListener() {
+        return this.usersinfoUpdated.asObservable();
+    }
+
+    // Single user info
+    getUserInfoByEmail(email: string) {
+        this.http.get<UserInfo>(environment.apiURL + "/userinfo/" + email)
+        .subscribe((userinfoData) => {
+            this.userinfo = userinfoData;
+            this.userinfoUpdated.next(this.userinfo);
+        });
+    }
+
+    getUserInfoEmailUpdateListener() {
         return this.userinfoUpdated.asObservable();
     }
 
-    addUserInfo(email: string, firstname: string, lastname: string, city: string, state: string, zipcode: string) {
+    addUserInfo(email: string, firstname: string, lastname: string, 
+        city: string, state: string, zipcode: string) {
+
+        console.log("Add new user-info service")
+
         const userinfo: UserInfo = {
              email: email, 
              firstname: firstname,
@@ -34,13 +55,14 @@ export class UserInfoService {
              state: state,
              zipcode: zipcode
             }
+
         this.http
             .post<{ message: string }>(environment.apiURL + "/userinfo", userinfo)
             .subscribe(responseData => {
                 console.log(responseData.message);
+                this.usersinfo.push(userinfo);
+                this.usersinfoUpdated.next([...this.usersinfo])
             });
         
-        this.userinfo.push(userinfo);
-        this.userinfoUpdated.next([...this.userinfo])
     }
 }
