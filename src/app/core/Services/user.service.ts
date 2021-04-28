@@ -38,7 +38,6 @@ export class UserService {
         console.log(environment.apiURL + "/users/" + email);
         this.http.get<User[]>(environment.apiURL + "/users/" + email)
             .subscribe((user) => {
-                console.log(user[0]);
                 this.currentUser = user[0];
                 this.currentUserUpdated.next(this.currentUser);
             });

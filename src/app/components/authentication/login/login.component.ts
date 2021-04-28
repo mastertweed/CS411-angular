@@ -47,6 +47,14 @@ export class LoginComponent implements OnInit, OnDestroy {
 
         if (!this.login) {
           this.userinfoService.addUserInfo(this.currentUser.email,"","","","","");
+
+          // Navigate to the preference page
+          this.router.navigate(['/user-info']);
+          
+        } else {
+
+          // Navigate to the preference page
+          this.router.navigate(['/preference']);
         }
     });
 
@@ -60,17 +68,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         // Get user data after verfification
         this.userService.getUserByEmail(this.loginEmail)
 
-        // Navigate to the preference page
-        this.router.navigate(['/preference']);
-
       } else {
         console.log("Validating signup and pulling info")
 
         // Get user data after verfification
         this.userService.getUserByEmail(this.signupEmail)
-
-        // Navigate to the preference page
-        this.router.navigate(['/user-info']);
       }
 
     });

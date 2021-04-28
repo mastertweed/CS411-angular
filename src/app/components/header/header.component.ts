@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
     this.currentUserSub = this.usersService.getCurrentUserUpdateListener()
     .subscribe((user: User) => {
         this.currentUser = user;
-        console.log(this.currentUser)
     });
   }
 
