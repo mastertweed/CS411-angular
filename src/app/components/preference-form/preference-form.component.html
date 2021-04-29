@@ -10,31 +10,6 @@
         PreferredMaxDistanceFromCurrentHome, PreferredCostOfLivingMax, 
         PreferredMinTemperature, PreferredMaxTemperature -->
         
-      <h4>Distance</h4>
-      <mat-label>Max Distance (miles)</mat-label>
-      <div style="display: flex; margin-bottom: 30px;">
-        <p>1</p>
-        <mat-slider 
-          min="1" 
-          max="6000" 
-          value="200" 
-          class="example-full-width" 
-          #distslider
-          name="maxDist"
-          ngModel
-          required
-          >
-        </mat-slider>
-        <p>6000</p>
-        
-        <input 
-          matInput 
-          type="number" 
-          value="{{distslider.value}}" 
-          class="slider-output"
-          >
-      </div>
-  
       <h4 style="margin-bottom: 8px;">Cost</h4>
       <div style="display: flex; margin-bottom: 20px;">
         <mat-form-field class="example-full-width">
@@ -62,31 +37,6 @@
         </mat-form-field>
       </div>
   
-      <h4>Demographics</h4>
-      <mat-label>Average Age</mat-label>
-      <div style="display: flex; margin-bottom: 30px;">
-        <p>18</p>
-        <mat-slider 
-          min="18" 
-          max="65" 
-          value="30" 
-          class="example-full-width" 
-          #ageslider
-          name="avgage"
-          ngModel
-          required
-          >
-        </mat-slider>
-        <p>65</p>
-        
-        <input 
-          matInput 
-          type="number" 
-          value="{{ageslider.value}}" 
-          class="slider-output"
-          >
-      </div>
-    
       <h4>Number of Bedrooms</h4>
       <div style="display: flex; margin-bottom: 40px;">
         <mat-checkbox style="margin-right: 20px" name="checkbox1" ngModel>1</mat-checkbox>
@@ -97,6 +47,44 @@
         <mat-checkbox name="checkbox6" ngModel>Single Family</mat-checkbox>
       </div>
       
+      <h4>Region</h4>
+      <div style="display: flex; margin-bottom: 1px;">
+        <mat-form-field appearance="fill">
+          <mat-label>Zip Code</mat-label>
+          <input 
+            matInput 
+            type="number" 
+            name="zipCode" 
+            #zipCode
+            ngModel
+            optional
+            >
+        </mat-form-field>
+      </div>
+      <mat-label>Max Distance (miles)</mat-label>
+      <div style="display: flex; margin-bottom: 30px;">
+        <p>1</p>
+        <mat-slider 
+          min="1" 
+          max="6000" 
+          value="200" 
+          class="example-full-width" 
+          #distslider
+          name="maxDist"
+          ngModel
+          optional
+          >
+        </mat-slider>
+        <p>6000</p>
+        
+        <input 
+          matInput 
+          type="number" 
+          value="{{distslider.value}}" 
+          class="slider-output"
+          >
+      </div>
+
       <h4 style="margin-bottom: 8px;">Climate</h4>
       <div style="display: flex; margin-bottom: 20px;">
         <mat-form-field class="example-full-width">
@@ -106,7 +94,7 @@
             type="number" 
             name="minTemp" 
             ngModel 
-            required
+            optional
             >
         </mat-form-field>
   
@@ -117,7 +105,7 @@
             type="number" 
             name="maxTemp" 
             ngModel
-            required
+            optional
             >
         </mat-form-field>
       </div>
@@ -145,6 +133,8 @@
               <th>Age</th>
               <th>Income</th>
               <th>Price</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
               <th>Score</th>
 
           </tr>
@@ -159,6 +149,8 @@
               <td>{{result.median_age}}</td>
               <td>{{result.per_capita_income}}</td>
               <td>{{result.price}}</td>
+              <td>{{result.latitude}}</td>
+              <td>{{result.longitude}}</td>
               <td>{{result.score}}</td>
           </tr>
       </tbody>

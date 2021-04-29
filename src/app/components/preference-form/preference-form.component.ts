@@ -25,6 +25,7 @@ export class PreferenceFormComponent implements OnInit, OnDestroy {
   singlefamily = 0;
   minTempValue = 0;
   maxTempValue = 0;
+  zipcode = 0;
 
   results: Housing[] = [];
   private resultsSub: Subscription;
@@ -41,6 +42,7 @@ export class PreferenceFormComponent implements OnInit, OnDestroy {
   onSubmitPrefer(form: NgForm) {
     console.log("Submitted");
     if (form.invalid) {
+      console.log("Invalid Form");
       return;
     }
     this.maxdistvalue = form.value.maxDist
@@ -57,7 +59,9 @@ export class PreferenceFormComponent implements OnInit, OnDestroy {
     this.minTempValue = form.value.minTemp
     this.maxTempValue = form.value.maxTemp
 
-    this.preferenceService.getPreferenceResults(this.maxdistvalue,this.minCostValue,this.maxCostValue,this.avgAge,
+    this.zipcode = form.value.zipCode
+
+    this.preferenceService.getPreferenceResults(this.maxdistvalue,this.zipcode, this.minCostValue,this.maxCostValue, this.avgAge,
       this.bedrooms1,this.bedrooms2,this.bedrooms3,this.bedrooms4,this.bedrooms5,
       this.singlefamily,this.minTempValue,this.maxTempValue)
   }

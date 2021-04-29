@@ -59,14 +59,14 @@ export class PreferenceService {
     // }
 
 
-    getPreferenceResults(max_distance: number, min_cost_living: number, max_cost_living: number, 
+    getPreferenceResults(max_distance: number, zip_code: number, min_cost_living: number, max_cost_living: number, 
         average_age: number, bedrooms1: number, bedrooms2: number, bedrooms3: number, bedrooms4: number, 
         bedrooms5: number, singlefamily: number, min_temp: number, max_temp: number) {
 
-        console.log('get preference')
         const tree = this.router.createUrlTree(["preference/results"], { queryParams: 
             { 
-            // max_distance: max_distance, 
+            max_distance: max_distance, 
+	    zipcode: zip_code,
             minprice: min_cost_living, 
             maxprice: max_cost_living, 
             // average_age: average_age, 

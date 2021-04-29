@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { Router } from '@angular/router';
+import { Subscription } from "rxjs";
+
+import { UserInfoService } from 'src/app/core/Services/user_info.service';
+import { UserInfo } from "../../../Shared/Models/userinfo.model";
 
 import { UserService } from "../../../core/Services/user.service";
 import { User } from "../../../Shared/Models/user.model";
@@ -11,9 +15,9 @@ import { AuthenticationService } from "../authentication.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
-  signup = 0
+  login = false;
 
   loginEmail = "";
   loginPassword = "";
@@ -25,12 +29,54 @@ export class LoginComponent implements OnInit {
     password: "some"
 }
 
+  currentUser: User;
+  private currentUserSub: Subscription;
+
+  authToken: string;
+  private authTokenSub: Subscription;
+
   constructor(private router: Router, 
     private userService: UserService, 
-    private authenticationService: AuthenticationService) {}
+    private authenticationService: AuthenticationService,
+    private userinfoService: UserInfoService) {}
 
   ngOnInit(): void {
-    this.user = this.userService.getCurrentUser()
+    this.currentUserSub = this.userService.getCurrentUserUpdateListener()
+    .subscribe((user: User) => {
+        this.currentUser = user;
+
+        if (!this.login) {
+          this.userinfoService.addUserInfo(this.currentUser.email,"","","","","");
+
+          // Navigate to the preference page
+          this.router.navigate(['/user-info']);
+          
+        } else {
+
+          // Navigate to the preference page
+          this.router.navigate(['/preference']);
+        }
+    });
+
+    this.authTokenSub = this.authenticationService.loginUpdatedListener()
+    .subscribe((authToken) => {
+      this.authToken = authToken;
+      
+      if (this.login) {
+        console.log("Validating login and pulling info")
+
+        // Get user data after verfification
+        this.userService.getUserByEmail(this.loginEmail)
+
+      } else {
+        console.log("Validating signup and pulling info")
+
+        // Get user data after verfification
+        this.userService.getUserByEmail(this.signupEmail)
+      }
+
+    });
+
   }
 
   onSubmitLogin(form: NgForm) {
@@ -38,22 +84,12 @@ export class LoginComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    this.login = true;
     this.loginEmail = form.value.loginEmail
     this.loginPassword = form.value.loginPassword
 
-    console.log(this.loginEmail);
-
     // Verify email and password exist in database, and recieve auth token
     this.authenticationService.login(this.loginEmail, this.loginPassword)
-
-    // Get user data after verfification
-    this.userService.getUserByEmail(this.loginEmail)
-
-    // Save user locally
-    this.user = this.userService.getCurrentUser()
-
-    // Navigate to the preference page
-    this.router.navigate(['/preference']);
   }
 
   onSubmitSignup(form: NgForm) {
@@ -61,6 +97,7 @@ export class LoginComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    this.login = false;
     this.signupEmail = form.value.signupEmail
     this.signupPassword = form.value.signupPassword
 
@@ -70,15 +107,15 @@ export class LoginComponent implements OnInit {
     // Verify email and password exist in database, and recieve auth token
     this.authenticationService.login(this.signupEmail, this.signupPassword)
 
-    // Save user locally
-    this.user = this.userService.getCurrentUser()
-
-    // Navigate to the user-info page
-    this.router.navigate(['/user-info']);
   }
 
   onGuestClick() {
     this.router.navigate(['/preference']);
+  }
+
+  ngOnDestroy() {
+    this.currentUserSub.unsubscribe();
+    this.authTokenSub.unsubscribe();
   }
   
 

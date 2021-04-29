@@ -9,7 +9,7 @@
   
         <mat-form-field class="example-full-width">
           <mat-label>Email</mat-label>
-          <input matInput name="email" ngModel required>
+          <input matInput name="email" disabled [(ngModel)]="currentUser.email" required>
         </mat-form-field>
   
         <mat-form-field class="example-full-width">
@@ -55,6 +55,6 @@
 
   </mat-card>
 
-  <app-user-information-list></app-user-information-list>
+  <!-- <app-user-information-list></app-user-information-list> -->
   
 </div>

@@ -1,23 +1,44 @@
 <mat-toolbar color="primary"> 
-    <div class="flex-container">
-        <div class="flex-item-left">
-            <a routerLink="/login"><h2>CS411 - Relocation Finder</h2></a>
-        </div>
-        <div class="flex-item-right">
-            <button 
-                mat-stroked-button 
-                [matMenuTriggerFor]="menu" 
-                style="background-color: azure; color: black;"
-                >Options
-            </button>
-            <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="/login">Login</button>
-            <button mat-menu-item routerLink="/user-info">User Info</button>
-            <button mat-menu-item routerLink="/preference">Preference</button>
-            <button mat-menu-item routerLink="/results">Results</button>
-            </mat-menu>
     
-        </div>
+    <a routerLink="/login"><h2>CS411 - Relocation Finder</h2></a>
+
+    <span class="example-spacer"></span>
+
+    <div *ngIf="currentUser">
+        <h3><strong>{{ currentUser.email }}</strong></h3>
+    </div>
+
+    <div *ngIf="!currentUser">
+        <h3>not logged in</h3>
+    </div>
+
+    <div style="margin-left: 20px;" *ngIf="currentUser">
+        <button 
+            mat-stroked-button 
+            [matMenuTriggerFor]="menu" 
+            style="background-color: azure; color: black;"
+            >Options
+        </button>
+        <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/login">Login</button>
+        <button mat-menu-item routerLink="/user-info">User Info</button>
+        <button mat-menu-item routerLink="/preference">Preference</button>
+        <button mat-menu-item routerLink="/results">Results</button>
+        </mat-menu>
+    </div>
+
+    <div style="margin-left: 20px;" *ngIf="!currentUser">
+        <button 
+            mat-stroked-button 
+            [matMenuTriggerFor]="menu" 
+            style="background-color: azure; color: black;"
+            >Options
+        </button>
+        <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/login">Login</button>
+        <button mat-menu-item routerLink="/preference">Preference</button>
+        <button mat-menu-item routerLink="/results">Results</button>
+        </mat-menu>
     </div>
 
 </mat-toolbar>

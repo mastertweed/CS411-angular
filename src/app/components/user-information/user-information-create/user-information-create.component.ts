@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
+import { UserService } from 'src/app/core/Services/user.service';
+import { User } from 'src/app/Shared/Models/user.model';
 
 import { UserInfoService } from "../../../core/Services/user_info.service";
+import { UserInfo } from "../../../Shared/Models/userinfo.model";
 
 @Component({
   selector: 'app-user-information-create',
@@ -17,9 +23,37 @@ export class UserInformationCreateComponent implements OnInit {
   state = "";
   zipcode = "";
 
-  constructor(public userinfoService: UserInfoService) {}
+  currentUser: User;
+
+  currentUserInfo: UserInfo;
+  private currentUserInfoSub: Subscription;
+
+  constructor(public userinfoService: UserInfoService, 
+    private userService: UserService, 
+    private router: Router) {}
 
   ngOnInit(): void {
+
+    // Revert to login page if no user logged in
+    console.log(this.currentUser)
+    this.currentUser = this.userService.getCurrentUser();
+    console.log(this.currentUser)
+    if (!this.currentUser) {
+      this.router.navigate(['/login']);
+      
+    } else {
+
+      // Find user-info of user current logged in
+      this.userinfoService.getUserInfoByEmail(this.currentUser.email)
+      this.currentUserInfoSub = this.userinfoService.getUserInfoEmailUpdateListener()
+      .subscribe((userinfo: UserInfo) => {
+          this.currentUserInfo = userinfo;
+          console.log(this.currentUser.email)
+          console.log(this.currentUserInfo)
+      });
+
+    }
+
   }
 
   onSubmitUserInfo(form: NgForm) {
