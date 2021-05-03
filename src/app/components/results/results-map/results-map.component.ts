@@ -5,12 +5,8 @@ import { Housing } from "../../../Shared/Models/housing.model";
 import { ZipCodes } from "../../../Shared/Models/zipcodes.model";
 import { ZipCodesService } from "../../../core/Services/zipcodes.service";
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
-
-<<<<<<< HEAD
-
-=======
 import { ViewChild } from '@angular/core'
->>>>>>> 634c04627e6d46c43977d3100d3507e42bb92f6e
+
 @Component({
   selector: 'app-results-map',
   templateUrl: './results-map.component.html',
@@ -67,19 +63,13 @@ export class ResultsMapComponent implements OnInit {
 		}	
 	    })
 	}
-	
-	
   }
- 
-
 
   openInfo(marker: MapMarker, content) {
     this.infoContent = content
     this.infoWindow.open(marker)
   }
   
-   
-
 }
 
 
