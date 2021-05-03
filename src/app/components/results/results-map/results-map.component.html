@@ -1,4 +1,26 @@
 
 <div class="my-google-map">
+<<<<<<< HEAD
   <google-map width="100%"></google-map>
+=======
+  <google-map
+     [zoom]="zoom"
+     [center]="center"
+     [options]="options" 
+  >
+	<map-marker
+	    #someMarker="mapMarker"
+	    *ngFor="let marker of markers"
+	    [position]="marker.position"
+	    [title]="marker.title"
+	    [options]="marker.options"
+	    [info]="marker.info"
+	    (mapClick)="openInfo(someMarker, marker.info)"
+	>
+	
+	</map-marker>
+  
+	<map-info-window>{{ infoContent }}</map-info-window>	
+  </google-map>
+>>>>>>> 634c04627e6d46c43977d3100d3507e42bb92f6e
 </div>
