@@ -7,18 +7,82 @@
         <div style="display: flex;">
             <mat-card style="width: 40%;">
                 <h3>Results List</h3>
-                <app-results-list></app-results-list>
+                <div>Click a location to see details</div>
+
+                <div *ngIf="results.length > 0">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>City, State, County</th>
+                            </tr>                        
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let result of results; let i = index" (click)="onClick(i)">
+                                <td>{{result.city}}, {{result.state}}, {{result.county}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <br><div *ngIf="results.length == 0">
+                    <strong>Please enter your preferences on the preference page to see results</strong>
+                </div>
             </mat-card>
             
             <mat-card style="width: 60%;">
                 <h3>Locations</h3>
-                <app-results-map></app-results-map>
+                <div class="my-google-map">
+                    <google-map 
+                        width="100%" 
+                        [center]="center"
+                        [zoom]="zoom">
+                    </google-map>
+                </div>
             </mat-card>
         </div>
         
         <mat-card>
             <h3>Details</h3>
-            <app-results-detail></app-results-detail>
+            <div>Here are the details of the selected location</div>
+            <div *ngIf="currentPick">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>County</th>
+                            <th>House type</th>
+                            <th>Mean Earning</th>
+                            <th>Age</th>
+                            <th>Income</th>
+                            <th>Price</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                            <th>Score</th>
+              
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{currentPick.city}}</td>
+                            <td>{{currentPick.state}}</td>
+                            <td>{{currentPick.county}}</td>
+                            <td>{{currentPick.housetype}}</td>
+                            <td>${{currentPick.mean_earnings}}</td>
+                            <td>{{currentPick.median_age}}</td>
+                            <td>${{currentPick.per_capita_income}}</td>
+                            <td>${{currentPick.price}}</td>
+                            <td>{{currentPick.latitude.toPrecision(5)}}</td>
+                            <td>{{currentPick.longitude.toPrecision(5)}}</td>
+                            <td><strong>{{currentPick.score}}</strong></td>
+                        </tr>
+                    </tbody>
+                  </table>
+            </div>
+
+            <br><div *ngIf="!currentPick">
+                <strong>Choose a location</strong> 
+            </div>
         </mat-card>
     </div>
 </div>

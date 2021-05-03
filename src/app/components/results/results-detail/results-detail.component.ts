@@ -3,8 +3,8 @@ import { Subscription } from "rxjs";
 
 import { ZipCodes } from "../../../Shared/Models/zipcodes.model";
 import { ZipCodesService } from "../../../core/Services/zipcodes.service";
-import { Housing } from "../../../Shared/Models/housing.model";
 import { PreferenceService } from "../../../core/Services/preference.service";
+import { Results } from 'src/app/Shared/Models/results.model';
 
 @Component({
   selector: 'app-results-detail',
@@ -20,7 +20,7 @@ export class ResultsDetailComponent implements OnInit {
   zipcodes: ZipCodes[] = [];
   private zipcodeSub: Subscription;
 
-  results: Housing[] = [];
+  results: Results[] = [];
   private resultsSub: Subscription;
 
   constructor(public zipcodesService: ZipCodesService, private preferenceService: PreferenceService) {}

@@ -37,6 +37,7 @@ import { ResultsMapComponent } from './components/results/results-map/results-ma
 import { ResultsDetailComponent } from './components/results/results-detail/results-detail.component';
 import { ResultsPageComponent } from './components/results/results-page/results-page.component';
 import { AuthInterceptor } from './components/authentication/auth-interceptor';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AuthInterceptor } from './components/authentication/auth-interceptor';
     ResultsListComponent,
     ResultsMapComponent,
     ResultsDetailComponent,
-    ResultsPageComponent
+    ResultsPageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -40,3 +40,8 @@
     padding: 8px;
     border: 2px solid grey;
 }
+
+.styled-table td:hover {
+    background-color: aqua;
+    cursor: pointer;
+}

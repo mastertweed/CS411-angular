@@ -5,6 +5,8 @@ import { Subscription } from "rxjs";
 import { UserPreference } from "../../Shared/Models/userpreference.model";
 import { Housing } from "../../Shared/Models/housing.model";
 import { PreferenceService } from "../../core/Services/preference.service";
+import { Results } from 'src/app/Shared/Models/results.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-preference-form',
@@ -27,15 +29,16 @@ export class PreferenceFormComponent implements OnInit, OnDestroy {
   maxTempValue = 0;
   zipcode = 0;
 
-  results: Housing[] = [];
+  results: Results[] = [];
   private resultsSub: Subscription;
 
-  constructor(public preferenceService: PreferenceService) { }
+  constructor(public preferenceService: PreferenceService, private router: Router) { }
 
   ngOnInit() { 
     this.resultsSub = this.preferenceService.getResultsUpdateListener()
-        .subscribe((results: Housing[]) => {
+        .subscribe((results: Results[]) => {
             this.results = results;
+            this.router.navigate(['/results']);
         });
   }
 
@@ -64,6 +67,7 @@ export class PreferenceFormComponent implements OnInit, OnDestroy {
     this.preferenceService.getPreferenceResults(this.maxdistvalue,this.zipcode, this.minCostValue,this.maxCostValue, this.avgAge,
       this.bedrooms1,this.bedrooms2,this.bedrooms3,this.bedrooms4,this.bedrooms5,
       this.singlefamily,this.minTempValue,this.maxTempValue)
+
   }
 
   ngOnDestroy() {

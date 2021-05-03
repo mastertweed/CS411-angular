@@ -1,16 +1,12 @@
 <table class="styled-table">
     <thead>
         <tr>
-            <th>City</th>
-            <th>State</th>
-            <th>County</th>
+            <th>City, State, County</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let result of results | slice:0:10">
-            <td>{{result.city}}</td>
-            <td>{{result.state}}</td>
-            <td>{{result.county}}</td>
+        <tr *ngFor="let result of results" (click)="onClick(result)">
+            <td>{{result.city}}, {{result.state}}, {{result.county}}</td>
         </tr>
     </tbody>
 </table>

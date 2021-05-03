@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router, UrlSerializer } from "@angular/router";
 
 import { UserPreference } from "../../Shared/Models/userpreference.model";
-import { Housing } from "../../Shared/Models/housing.model";
+import { Results } from "../../Shared/Models/results.model";
 import { environment } from "../../../environments/environment";
 
 @Injectable({providedIn: 'root'})
@@ -12,8 +12,8 @@ export class PreferenceService {
     private preference: UserPreference[] = [];
     private preferenceUpdated = new Subject<UserPreference[]>();
 
-    private results: Housing[] = [];
-    private resultsUpdated = new Subject<Housing[]>();
+    private results: Results[] = [];
+    private resultsUpdated = new Subject<Results[]>();
 
 
     constructor(private http: HttpClient, private router: Router, private serializer: UrlSerializer) {}
@@ -81,7 +81,7 @@ export class PreferenceService {
             } 
         });
 
-        this.http.get<Housing[]>(environment.apiURL + this.serializer.serialize(tree))
+        this.http.get<Results[]>(environment.apiURL + this.serializer.serialize(tree))
             .subscribe(resultsData => {
                 this.results = resultsData;
                 this.resultsUpdated.next([...this.results]);

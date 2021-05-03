@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 
-
 @Component({
   selector: 'app-results-map',
   templateUrl: './results-map.component.html',
