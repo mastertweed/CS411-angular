@@ -22,7 +22,7 @@ export class ResultsMapComponent implements OnInit {
   zoom = 3
   center: google.maps.LatLngLiteral
   options: google.maps.MapOptions = {
-	zoomControl: false,
+	zoomControl: true,
 	scrollwheel: false,
 	disableDoubleClickZoom: true,
 	mapTypeId: 'hybrid',
