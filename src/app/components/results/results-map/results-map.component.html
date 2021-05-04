@@ -1,9 +1,16 @@
+<div style="width: 100%;">
+	<h3 style="display: inline;">Locations</h3>
+	<button mat-button style="display: inline; margin-left: 5px;" (click)="onResetClick()">reset</button>
+</div>
+
+
 
 <div class="my-google-map">
   <google-map
      [zoom]="zoom"
      [center]="center"
      [options]="options" 
+	 width="100%" 
   >
 	<map-marker
 	    #someMarker="mapMarker"

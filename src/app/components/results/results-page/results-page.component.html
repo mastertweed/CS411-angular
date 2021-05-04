@@ -29,15 +29,8 @@
                 </div>
             </mat-card>
             
-            <mat-card style="width: 60%;">
-                <h3>Locations</h3>
-                <div class="my-google-map">
-                    <google-map 
-                        width="100%" 
-                        [center]="center"
-                        [zoom]="zoom">
-                    </google-map>
-                </div>
+            <mat-card style="width: 60%; padding-top: 0;">
+                <app-results-map></app-results-map>
             </mat-card>
         </div>
         
@@ -74,7 +67,7 @@
                             <td>${{currentPick.price}}</td>
                             <td>{{currentPick.latitude.toPrecision(5)}}</td>
                             <td>{{currentPick.longitude.toPrecision(5)}}</td>
-                            <td><strong>{{currentPick.score}}</strong></td>
+                            <td><strong>{{currentPick.score.toPrecision(5)}}</strong></td>
                         </tr>
                     </tbody>
                   </table>

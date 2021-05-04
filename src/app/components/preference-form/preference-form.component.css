@@ -1,66 +1,54 @@
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
-  
-  td {
-    padding-right: 8px;
-  }
 
-  .slider-output {
-    text-align: right; 
-    width: 50%;
-    font-size: x-large;
-  }
-
-  .h2-title {
-    margin-bottom: 40px; 
-    text-align: center; 
-    background-color: rgb(224, 229, 255); 
-    padding: 3%;
-  }
   
-  mat-card {
-    margin: 10px;
-  }
+.example-full-width {
+  width: 100%;
+}
 
-  .styled-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    width: 100%;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+.slider-output {
+  text-align: right; 
+  width: 50%;
+  font-size: x-large;
+}
+
+.h2-title {
+  margin-bottom: 40px; 
+  text-align: center; 
+  background-color: rgb(224, 229, 255); 
+  padding: 3%;
+}
+
+/* .styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  width: 100%;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .styled-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
 }
 
 .styled-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
 }
 
 .styled-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
 }
 
 .styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
-}
+  font-weight: bold;
+  color: #009879;
+} */
 
 
 /* http://nodeangular-env.eba-wnqdnhsn.us-east-1.elasticbeanstalk.com/results?minprice=12&maxprice=4242424&onebed=&twobed=true&threebed=&fourbed=&fiveplusbed=&mintemp=-35&maxtemp=100 */

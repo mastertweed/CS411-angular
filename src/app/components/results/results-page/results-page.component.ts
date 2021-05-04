@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PreferenceService } from 'src/app/core/Services/preference.service';
+import { ResultsService } from 'src/app/core/Services/results.service';
 import { ZipCodesService } from 'src/app/core/Services/zipcodes.service';
 import { Results } from 'src/app/Shared/Models/results.model';
 import { ZipCodes } from 'src/app/Shared/Models/zipcodes.model';
@@ -37,15 +38,24 @@ export class ResultsPageComponent implements OnInit, OnDestroy {
   results: Results[] = [];
   private resultsSub: Subscription;
 
-  constructor(public zipcodesService: ZipCodesService, private preferenceService: PreferenceService) {}
+	// Get current result under detail
+	result: Results;
+	private resultSub: Subscription;
+
+  constructor(public zipcodesService: ZipCodesService, 
+    private preferenceService: PreferenceService,
+    private resultsService: ResultsService) {}
 
   ngOnInit() { 
     this.results = this.preferenceService.getResults()
-    if (this.results) {
-      this.center.lat = this.results[0].latitude
-      this.center.lng = this.results[0].longitude
-      this.zoom = 8
-    }
+
+    // Get current detail result and subscribe to changes
+    this.result = this.resultsService.getCurrentResult();
+    this.resultSub = this.resultsService.getCurrentResultUpdateListener()
+      .subscribe((result: Results) => {
+        this.result = result;
+        console.log(this.result)
+      });
   }
 
   onClick(index) {
@@ -55,13 +65,10 @@ export class ResultsPageComponent implements OnInit, OnDestroy {
     this.center.lng = this.results[index].longitude
     this.zoom = 8
 
-    console.log(this.center.lng)
-    console.log(this.center.lat)
+    this.resultsService.setCurrentResult(this.results[index])
   }
 
-  ngOnDestroy() {
-
-  }
-
-
+	ngOnDestroy() {
+		this.resultSub.unsubscribe();
+	}
 }
