@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { DetailsService } from 'src/app/core/Services/details.service';
 import { PreferenceService } from 'src/app/core/Services/preference.service';
 import { ResultsService } from 'src/app/core/Services/results.service';
 import { ZipCodesService } from 'src/app/core/Services/zipcodes.service';
@@ -42,9 +43,16 @@ export class ResultsPageComponent implements OnInit, OnDestroy {
 	result: Results;
 	private resultSub: Subscription;
 
+  // Get details on result location
+  details: any;
+  private detailsSub: Subscription;
+
+  incentives: any;
+
   constructor(public zipcodesService: ZipCodesService, 
     private preferenceService: PreferenceService,
-    private resultsService: ResultsService) {}
+    private resultsService: ResultsService,
+    private detailsService: DetailsService) {}
 
   ngOnInit() { 
     this.results = this.preferenceService.getResults()
@@ -54,12 +62,33 @@ export class ResultsPageComponent implements OnInit, OnDestroy {
     this.resultSub = this.resultsService.getCurrentResultUpdateListener()
       .subscribe((result: Results) => {
         this.result = result;
-        console.log(this.result)
+      });
+
+    this.detailsSub = this.detailsService.getDetailsUpdateListener()
+      .subscribe((details: any) => {
+        this.details = details;
+        console.log(this.details)
+        this.incentives = {
+          description: "",
+          requirements: "",
+        }
+
+        for (let i = 0; i < this.details.length; i++) {
+          if (this.details[i].description) {
+            this.incentives = this.details[i]
+          }
+        }
+
       });
   }
 
   onClick(index) {
-    console.log(this.results[index].city)
+    this.detailsService.getDetailsSingle(
+      this.results[index].city,
+      this.results[index].state,
+      this.results[index].county
+      )
+
     this.currentPick = this.results[index];
     this.center.lat = this.results[index].latitude
     this.center.lng = this.results[index].longitude

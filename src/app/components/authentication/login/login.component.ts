@@ -9,6 +9,7 @@ import { UserInfo } from "../../../Shared/Models/userinfo.model";
 import { UserService } from "../../../core/Services/user.service";
 import { User } from "../../../Shared/Models/user.model";
 import { AuthenticationService } from "../authentication.service";
+import { UserPreferenceSerivce } from 'src/app/core/Services/userpreference.service';
 
 @Component({
   selector: 'app-login',
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router, 
     private userService: UserService, 
+    private userpreferenceService: UserPreferenceSerivce,
     private authenticationService: AuthenticationService,
     private userinfoService: UserInfoService) {}
 
@@ -103,6 +105,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     // Attempt to add user to the database
     this.userService.addUser(this.signupEmail,this.signupPassword)
+
+    // Attempt to add user to the database
+    this.userpreferenceService.createUserPreferenceByEmail(this.signupEmail, 
+      0, '19104', 1000000, 0, 0, 0, 0, 0, 0, 0, -100, 100)
     
     // Verify email and password exist in database, and recieve auth token
     this.authenticationService.login(this.signupEmail, this.signupPassword)

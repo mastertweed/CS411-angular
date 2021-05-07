@@ -80,7 +80,7 @@ export class ResultsMapComponent implements OnInit, OnDestroy {
 		   text: 'Marker label',
 		},
 		title: res.city + ', ' + res.state,
-		info: "Marker Info",
+		info: "Score = " + res.score.toPrecision(5),
 		options: {
 		    //animation: google.maps.Animation.BOUNCE,
 		}	

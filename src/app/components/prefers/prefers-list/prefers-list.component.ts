@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from "rxjs";
 
-import { Prefers } from "../../../Shared/Models/prefers.model";
-import { PrefersService } from "../../../core/Services/prefers.service";
+import { UserPreference } from "../../../Shared/Models/userpreference.model";
+import { UserPreferenceSerivce } from "../../../core/Services/userpreference.service";
 
 
 @Component({
@@ -12,21 +12,21 @@ import { PrefersService } from "../../../core/Services/prefers.service";
 })
 export class PrefersListComponent implements OnInit, OnDestroy {
 
-  prefers: Prefers[] = [];
-  private prefersSub: Subscription;
+  userpreference: UserPreference[] = [];
+  private userpreferenceSub: Subscription;
 
-  constructor(public prefersService: PrefersService) {}
+  constructor(public userpreferenceService: UserPreferenceSerivce) {}
 
   ngOnInit() { 
-    this.prefersService.getPrefers();
-    this.prefersSub = this.prefersService.getPrefersUpdateListener()
-        .subscribe((prefers: Prefers[]) => {
-            this.prefers = prefers;
+    this.userpreferenceService.getUserPreference();
+    this.userpreferenceSub = this.userpreferenceService.getUserPreferenceUpdateListener()
+        .subscribe((userpreference: UserPreference[]) => {
+            this.userpreference = userpreference;
         });
   }
 
   ngOnDestroy() {
-      this.prefersSub.unsubscribe();
+      this.userpreferenceSub.unsubscribe();
   }
 
 }

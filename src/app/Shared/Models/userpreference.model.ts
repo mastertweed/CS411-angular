@@ -10,6 +10,7 @@ export interface UserPreference {
     bedrooms4: boolean;
     bedrooms5: boolean;
     singlefamily: boolean;
+    zipcode: string;
     min_temp: number;
     max_temp: number;
 }

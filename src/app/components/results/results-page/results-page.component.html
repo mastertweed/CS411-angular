@@ -36,6 +36,7 @@
         
         <mat-card>
             <h3>Details</h3>
+            <h4>General</h4>
             <div>Here are the details of the selected location</div>
             <div *ngIf="currentPick">
                 <table class="styled-table">
@@ -68,6 +69,48 @@
                             <td>{{currentPick.latitude.toPrecision(5)}}</td>
                             <td>{{currentPick.longitude.toPrecision(5)}}</td>
                             <td><strong>{{currentPick.score.toPrecision(5)}}</strong></td>
+                        </tr>
+                    </tbody>
+                  </table>
+            </div>
+
+            <h4>Education</h4>
+            <div *ngIf="currentPick">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Associates Degree</th>
+                            <th>Bachelors Degree</th>
+                            <th>Grad Degree</th>
+                            <th>HS Grad</th>
+                            <th>Some College</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{details[0].associates_degree}} (%)</td>
+                            <td>{{details[0].bachelors_degree}} (%)</td>
+                            <td>{{details[0].grad_degree}} (%)</td>
+                            <td>{{details[0].hs_grad}} (%)</td>
+                            <td>{{details[0].some_college}} (%)</td>
+                        </tr>
+                    </tbody>
+                  </table>
+            </div>
+
+            <h4>Incentives</h4>
+            <div *ngIf="currentPick && incentives">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Descriptions</th>
+                            <th>Requirements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{incentives.description}}</td>
+                            <td>{{incentives.requirements}}</td>
                         </tr>
                     </tbody>
                   </table>
