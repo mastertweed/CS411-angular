@@ -1,170 +1,174 @@
-<div style="margin-top: 80px;">
-  <mat-card style="text-align: center;">
-    <h2>Preference Form</h2>
-  </mat-card>
-  
-  <mat-card style="width: 50%; margin-left: 25%; margin-top: 20px;">
-    <div style="margin: 10px;">
-      <form (submit)="onSubmitPrefer(preferForm)" #preferForm="ngForm"> 
+<div class="bg"></div>
 
-        <div>
-          <h3>Cost</h3>
-          <p>Cost of Living</p>
-          <div style="display: flex; margin-bottom: 20px;">
-            <mat-form-field class="example-full-width">
-              <mat-label>Minimum</mat-label>
-              <input 
-                matInput 
-                type="number" 
-                name="minCost" 
-                #minCost
-                ngModel
-                required
-                >
-            </mat-form-field>
-      
-            <mat-form-field class="example-full-width" style="margin-left: 5%;">
-              <mat-label>Maximum</mat-label>
-              <input 
-                matInput 
-                type="number" 
-                name="maxCost"
-                #maxCost
-                ngModel
-                required
-                >
-            </mat-form-field>
-          </div> 
-        </div>
-
-        <div>
-          <h3>Number of Bedrooms</h3>
-          <div style="display: flex; margin-bottom: 40px;">
-            <mat-checkbox style="margin-right: 20px" name="checkbox1" ngModel>1</mat-checkbox>
-            <mat-checkbox style="margin-right: 20px" name="checkbox2" ngModel>2</mat-checkbox>
-            <mat-checkbox style="margin-right: 20px" name="checkbox3" ngModel>3</mat-checkbox>
-            <mat-checkbox style="margin-right: 20px" name="checkbox4" ngModel>4</mat-checkbox>
-            <mat-checkbox style="margin-right: 20px" name="checkbox5" ngModel>5+</mat-checkbox>
-            <mat-checkbox name="checkbox6" ngModel>Single Family</mat-checkbox>
-          </div>
-        </div>
-
-        <div>
-          <h3>Region</h3>
-          <div style="display: flex; margin-bottom: 8px;">
-            <mat-form-field>
-              <mat-label>Zip Code</mat-label>
-              <input 
-                matInput 
-                type="number" 
-                name="zipCode" 
-                #zipCode
-                ngModel
-                optional
-                >
-            </mat-form-field>
-          </div>
+<div class="bg-overlay">
+  <div style="margin-top: 80px;">
+    <mat-card style="text-align: center;">
+      <h2>Preference Form</h2>
+    </mat-card>
     
-          <mat-label>Max Distance (miles)</mat-label>
-          <div style="display: flex; margin-bottom: 30px;">
-            <p>1</p>
-            <mat-slider 
-              min="1" 
-              max="6000" 
-              value="200" 
-              class="example-full-width" 
-              #distslider
-              name="maxDist"
-              ngModel
-              optional
-              >
-            </mat-slider>
-            <p>6000</p>
+    <mat-card style="margin-top: 20px; background-color: rgba(255, 255, 255, 0.9);">
+      <div style="margin: 10px;">
+        <form (submit)="onSubmitPrefer(preferForm)" #preferForm="ngForm"> 
+
+          <div>
+            <h3>Cost</h3>
+            <p>Cost of Living</p>
+            <div *ngIf="currentUser" style="display: flex; margin-bottom: 20px;">
+              <mat-form-field class="example-full-width">
+                <mat-label>Minimum</mat-label>
+                <input 
+                  matInput 
+                  type="number" 
+                  name="minCost" 
+                  #minCost
+                  [(ngModel)]="userpreference.min_cost"
+                  required
+                  >
+              </mat-form-field>
+        
+              <mat-form-field class="example-full-width" style="margin-left: 5%;">
+                <mat-label>Maximum</mat-label>
+                <input 
+                  matInput 
+                  type="number" 
+                  name="maxCost"
+                  #maxCost
+                  [(ngModel)]="userpreference.max_cost"
+                  required
+                  >
+              </mat-form-field>
+            </div> 
+          </div>
+
+          <div>
+            <h3>Number of Bedrooms</h3>
+            <div *ngIf="currentUser" style="display: flex; margin-bottom: 40px;">
+              <mat-checkbox style="margin-right: 20px" name="checkbox1" [(ngModel)]="userpreference.bedrooms1">1</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px" name="checkbox2" [(ngModel)]="userpreference.bedrooms2">2</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px" name="checkbox3" [(ngModel)]="userpreference.bedrooms3">3</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px" name="checkbox4" [(ngModel)]="userpreference.bedrooms4">4</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px" name="checkbox5" [(ngModel)]="userpreference.bedrooms5">5+</mat-checkbox>
+              <mat-checkbox name="checkbox6" [(ngModel)]="userpreference.singlefamily">Single Family</mat-checkbox>
+            </div>
+          </div>
+
+          <div>
+            <h3>Region</h3>
+
+            <div *ngIf="currentUser" style="display: flex; margin-bottom: 8px;">
+              <mat-form-field>
+                <mat-label>Zip Code</mat-label>
+                <input 
+                  matInput 
+                  type="number" 
+                  name="zipCode" 
+                  #zipCode
+                  [(ngModel)]="userpreference.zipcode"
+                  optional
+                  >
+              </mat-form-field>
+            </div>
             
-            <input 
-              matInput 
-              type="number" 
-              value="{{distslider.value}}" 
-              class="slider-output"
-              >
-          </div>
-        </div>
-
-  
-        <div>
-          <h3>Climate</h3>
-          <div style="display: flex; margin-bottom: 20px;">
-            <mat-form-field class="example-full-width">
-              <mat-label>Minimum Temp</mat-label>
+            <mat-label>Max Distance (miles)</mat-label>
+            <div *ngIf="currentUser" style="display: flex; margin-bottom: 30px;">
+              <p>1</p>
+              <mat-slider 
+                min="1" 
+                max="3500" 
+                class="example-full-width" 
+                #distslider
+                name="maxDist"
+                [(ngModel)]="userpreference.maxdist"
+                optional
+                >
+              </mat-slider>
+              <p>3500</p>
+              
               <input 
                 matInput 
                 type="number" 
-                name="minTemp" 
-                ngModel 
-                optional
+                value="{{distslider.value}}" 
+                class="slider-output"
                 >
-            </mat-form-field>
+            </div>
+          </div>
+
+    
+          <div>
+            <h3>Climate</h3>
+            <div *ngIf="currentUser" style="display: flex; margin-bottom: 20px;">
+              <mat-form-field class="example-full-width">
+                <mat-label>Minimum Temp</mat-label>
+                <input 
+                  matInput 
+                  type="number" 
+                  name="minTemp" 
+                  [(ngModel)]="userpreference.min_temp" 
+                  optional
+                  >
+              </mat-form-field>
+        
+              <mat-form-field class="example-full-width" style="margin-left: 5%;">
+                <mat-label>Maximum Temp</mat-label>
+                <input 
+                  matInput 
+                  type="number" 
+                  name="maxTemp" 
+                  [(ngModel)]="userpreference.max_temp"
+                  optional
+                  >
+              </mat-form-field>
+            </div>
+          </div>
+
+
+          <button mat-raised-button type="submit" color="primary" style="margin-left: 30%; width: 40%; margin-top: 5px; margin-bottom: 15px;">Submit</button>
       
-            <mat-form-field class="example-full-width" style="margin-left: 5%;">
-              <mat-label>Maximum Temp</mat-label>
-              <input 
-                matInput 
-                type="number" 
-                name="maxTemp" 
-                ngModel
-                optional
-                >
-            </mat-form-field>
-          </div>
-        </div>
-
-
-        <button mat-raised-button type="submit" color="primary" style="margin-left: 30%; width: 40%; margin-top: 5px; margin-bottom: 15px;">Submit</button>
+        </form>
+      </div>
+      
+    </mat-card>
     
-      </form>
-    </div>
-    
-  </mat-card>
-  
-  <!-- TEMP to show results -->
-  <!-- <mat-card style="margin-top: 15px;">
-    <div>
-      <h2 style="margin-top: 5px;">Results</h2>
-      (only top 100)
-    </div>
-    
-    <table class="styled-table">
-      <thead>
-          <tr>
-              <th>City</th>
-              <th>State</th>
-              <th>County</th>
-              <th>House type</th>
-              <th>Mean Earning</th>
-              <th>Age</th>
-              <th>Income</th>
-              <th>Price</th>
-              <th>Latitude</th>
-              <th>Longitude</th>
-              <th>Score</th>
+    <!-- TEMP to show results -->
+    <!-- <mat-card style="margin-top: 15px;">
+      <div>
+        <h2 style="margin-top: 5px;">Results</h2>
+        (only top 100)
+      </div>
+      
+      <table class="styled-table">
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>State</th>
+                <th>County</th>
+                <th>House type</th>
+                <th>Mean Earning</th>
+                <th>Age</th>
+                <th>Income</th>
+                <th>Price</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Score</th>
 
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let result of results | slice:0:100">
-              <td>{{result.city}}</td>
-              <td>{{result.state}}</td>
-              <td>{{result.county}}</td>
-              <td>{{result.housetype}}</td>
-              <td>{{result.mean_earnings}}</td>
-              <td>{{result.median_age}}</td>
-              <td>{{result.per_capita_income}}</td>
-              <td>{{result.price}}</td>
-              <td>{{result.latitude}}</td>
-              <td>{{result.longitude}}</td>
-              <td>{{result.score}}</td>
-          </tr>
-      </tbody>
-    </table>
-  </mat-card> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let result of results | slice:0:100">
+                <td>{{result.city}}</td>
+                <td>{{result.state}}</td>
+                <td>{{result.county}}</td>
+                <td>{{result.housetype}}</td>
+                <td>{{result.mean_earnings}}</td>
+                <td>{{result.median_age}}</td>
+                <td>{{result.per_capita_income}}</td>
+                <td>{{result.price}}</td>
+                <td>{{result.latitude}}</td>
+                <td>{{result.longitude}}</td>
+                <td>{{result.score}}</td>
+            </tr>
+        </tbody>
+      </table>
+    </mat-card> -->
+  </div>
 </div>

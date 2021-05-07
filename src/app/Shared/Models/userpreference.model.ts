@@ -3,12 +3,11 @@ export interface UserPreference {
     max_distance: number;
     min_cost_living: number;
     max_cost_living: number;
-    average_age: number;
-    bedrooms1: boolean;
-    bedrooms2: boolean;
-    bedrooms3: boolean;
-    bedrooms4: boolean;
-    bedrooms5: boolean;
+    bedrooms1: number;
+    bedrooms2: number;
+    bedrooms3: number;
+    bedrooms4: number;
+    bedrooms5: number;
     singlefamily: boolean;
     zipcode: string;
     min_temp: number;

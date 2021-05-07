@@ -19,7 +19,7 @@ export class PrefersListComponent implements OnInit, OnDestroy {
 
   ngOnInit() { 
     this.userpreferenceService.getUserPreference();
-    this.userpreferenceSub = this.userpreferenceService.getUserPreferenceUpdateListener()
+    this.userpreferenceSub = this.userpreferenceService.getUserPreferencesUpdateListener()
         .subscribe((userpreference: UserPreference[]) => {
             this.userpreference = userpreference;
         });

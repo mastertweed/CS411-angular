@@ -9,16 +9,33 @@ import { Router, UrlSerializer } from "@angular/router";
 
 @Injectable({providedIn: 'root'})
 export class UserPreferenceSerivce {
-    private userpreference: UserPreference[] = [];
-    private userpreferenceUpdated = new Subject<UserPreference[]>();
+    private userpreferences: UserPreference[] = [];
+    private userpreferencesUpdated = new Subject<UserPreference[]>();
+
+    private userpreference: UserPreference;
+    private userpreferenceUpdated = new Subject<UserPreference>();
 
     constructor(private http: HttpClient, private router: Router, private serializer: UrlSerializer) {}
 
+    // Get all preferences
     getUserPreference() {
         this.http.get<UserPreference[]>(environment.apiURL + '/userpreference')
         .subscribe((userData) => {
+            this.userpreferences = userData;
+            this.userpreferencesUpdated.next([...this.userpreferences]);
+        });
+    }
+
+    getUserPreferencesUpdateListener() {
+        return this.userpreferencesUpdated.asObservable();
+    }
+
+    // Get single preference
+    getUserPreferenceByEmail(email: string) {
+        this.http.get<UserPreference>(environment.apiURL + '/userpreference/' + email)
+        .subscribe((userData) => {
             this.userpreference = userData;
-            this.userpreferenceUpdated.next([...this.userpreference]);
+            this.userpreferenceUpdated.next(this.userpreference);
         });
     }
 
@@ -56,8 +73,6 @@ export class UserPreferenceSerivce {
                 console.log(responseData.message);
             });
     }
-
-
 
     createUserPreferenceByEmail(email: string, max_distance: number, 
         zipcode: string, min_cost: number, max_cost: number, bedrooms1: number, 

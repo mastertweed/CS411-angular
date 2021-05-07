@@ -47,7 +47,7 @@ export class UserInformationCreateComponent implements OnInit {
       this.userinfoService.getUserInfoByEmail(this.currentUser.email)
       this.currentUserInfoSub = this.userinfoService.getUserInfoEmailUpdateListener()
       .subscribe((userinfo: UserInfo) => {
-          this.currentUserInfo = userinfo;
+          this.currentUserInfo = userinfo[0];
           console.log(this.currentUserInfo)
       });
 

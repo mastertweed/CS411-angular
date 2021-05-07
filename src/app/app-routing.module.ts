@@ -10,7 +10,7 @@ import { LoginComponent } from "./components/authentication/login/login.componen
 import { ZipcodeListComponent } from "./components/zipcodes/zipcode-list/zipcode-list.component";
 import { CensusListComponent } from "./components/census/census-list/census-list.component";
 import { WeatherListComponent } from "./components/weather/weather-list/weather-list.component";
-import { UserInformationCreateComponent } from "./components/user-information/user-information-create/user-information-create.component";
+import { UserInformationListComponent } from "./components/user-information/user-information-list/user-information-list.component";
 import { ResultsPageComponent } from "./components/results/results-page/results-page.component";
 
 const routes: Routes = [
@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: "zipcode", component: ZipcodeListComponent },
   { path: "census", component: CensusListComponent },
   { path: "weather", component: WeatherListComponent },
-  { path: "userinfo", component: UserInformationCreateComponent },
+  { path: "userinfo", component: UserInformationListComponent },
   { path: "login", component: LoginComponent },
   { path: "results", component: ResultsPageComponent }
 ];

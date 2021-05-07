@@ -48,6 +48,7 @@ export class ResultsPageComponent implements OnInit, OnDestroy {
   private detailsSub: Subscription;
 
   incentives: any;
+  showIncentives = false;
 
   constructor(public zipcodesService: ZipCodesService, 
     private preferenceService: PreferenceService,
@@ -67,7 +68,6 @@ export class ResultsPageComponent implements OnInit, OnDestroy {
     this.detailsSub = this.detailsService.getDetailsUpdateListener()
       .subscribe((details: any) => {
         this.details = details;
-        console.log(this.details)
         this.incentives = {
           description: "",
           requirements: "",
@@ -76,6 +76,12 @@ export class ResultsPageComponent implements OnInit, OnDestroy {
         for (let i = 0; i < this.details.length; i++) {
           if (this.details[i].description) {
             this.incentives = this.details[i]
+            this.showIncentives = true;
+            console.log("found incentives")
+            console.log(this.details)
+            console.log(this.details[i])
+          } else {
+            this.showIncentives = false;
           }
         }
 

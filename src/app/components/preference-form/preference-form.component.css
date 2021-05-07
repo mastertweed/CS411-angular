@@ -17,6 +17,32 @@
   padding: 3%;
 }
 
+.bg {
+  background-image: url("../../../assets//images/pexels-ricardo-esquivel-1563256.jpg");
+
+  background-color: gray;
+
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+
+  /* Full height */
+  height: 100vh;
+
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-overlay {
+  text-align: center;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* .styled-table {
   border-collapse: collapse;
   margin: 25px 0;
@@ -49,6 +75,3 @@
   font-weight: bold;
   color: #009879;
 } */
-
-
-/* http://nodeangular-env.eba-wnqdnhsn.us-east-1.elasticbeanstalk.com/results?minprice=12&maxprice=4242424&onebed=&twobed=true&threebed=&fourbed=&fiveplusbed=&mintemp=-35&maxtemp=100 */

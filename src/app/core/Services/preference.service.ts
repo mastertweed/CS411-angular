@@ -93,7 +93,6 @@ export class PreferenceService {
     }
 
     getResults() {
-        console.log(this.results[0])
         return this.results
     }
 }

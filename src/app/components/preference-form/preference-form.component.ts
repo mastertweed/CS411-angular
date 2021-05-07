@@ -34,19 +34,33 @@ export class PreferenceFormComponent implements OnInit, OnDestroy {
   results: Results[] = [];
   private resultsSub: Subscription;
 
+  userpreference: UserPreference;
+  private userpreferenceSub: Subscription;
+
   currentUser: User;
 
   constructor(public preferenceService: PreferenceService, private router: Router, 
     private userpreferenceService: UserPreferenceSerivce, private userService: UserService) { }
 
   ngOnInit() { 
+    // Get current user
+    this.currentUser = this.userService.getCurrentUser();
+
+    // Once results return, route to new page
     this.resultsSub = this.preferenceService.getResultsUpdateListener()
         .subscribe((results: Results[]) => {
             this.results = results;
             this.router.navigate(['/results']);
         });
 
-    this.currentUser = this.userService.getCurrentUser();
+    this.userpreferenceService.getUserPreferenceByEmail(this.currentUser.email)
+    this.userpreferenceSub = this.userpreferenceService.getUserPreferenceUpdateListener()
+      .subscribe((userpreference: UserPreference) => {
+        this.userpreference = userpreference[0];
+
+        console.log(this.userpreference)
+      });
+
   }
 
   onSubmitPrefer(form: NgForm) {
@@ -77,9 +91,9 @@ export class PreferenceFormComponent implements OnInit, OnDestroy {
       this.singlefamily,this.minTempValue,this.maxTempValue)
     }
 
-    // this.preferenceService.getPreferenceResults(this.maxdistvalue,this.zipcode, this.minCostValue,this.maxCostValue, this.avgAge,
-    //   this.bedrooms1,this.bedrooms2,this.bedrooms3,this.bedrooms4,this.bedrooms5,
-    //   this.singlefamily,this.minTempValue,this.maxTempValue)
+    this.preferenceService.getPreferenceResults(this.maxdistvalue,this.zipcode, this.minCostValue,this.maxCostValue, this.avgAge,
+      this.bedrooms1,this.bedrooms2,this.bedrooms3,this.bedrooms4,this.bedrooms5,
+      this.singlefamily,this.minTempValue,this.maxTempValue)
 
   }
 

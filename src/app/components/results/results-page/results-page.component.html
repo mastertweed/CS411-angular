@@ -36,9 +36,9 @@
         
         <mat-card>
             <h3>Details</h3>
-            <h4>General</h4>
-            <div>Here are the details of the selected location</div>
             <div *ngIf="currentPick">
+                <h4>General</h4>
+                <div>Here are the details of the selected location</div>
                 <table class="styled-table">
                     <thead>
                         <tr>
@@ -74,8 +74,8 @@
                   </table>
             </div>
 
-            <h4>Education</h4>
             <div *ngIf="currentPick">
+                <h4>Education</h4>
                 <table class="styled-table">
                     <thead>
                         <tr>
@@ -98,8 +98,9 @@
                   </table>
             </div>
 
-            <h4>Incentives</h4>
-            <div *ngIf="currentPick && incentives">
+            
+            <div *ngIf="currentPick && showIncentives">
+                <h4>Incentives</h4>
                 <table class="styled-table">
                     <thead>
                         <tr>
@@ -117,7 +118,7 @@
             </div>
 
             <br><div *ngIf="!currentPick">
-                <strong>Choose a location</strong> 
+                <strong>Please choose a location to show details</strong> 
             </div>
         </mat-card>
     </div>

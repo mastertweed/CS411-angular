@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.userinfoService.addUserInfo(this.currentUser.email,"","","","","");
 
           // Attempt to add user to the database
-          this.userpreferenceService.createUserPreferenceByEmail(this.currentUser.email, 0, "19104", 1000000, 0, 0, 0, 0, 0, 0, 0, -100, 100)
+          this.userpreferenceService.createUserPreferenceByEmail(this.currentUser.email, 100, "19104", 0, 500000, 1, 0, 1, 0, 0, 0, -100, 100)
 
           // Navigate to the preference page
           this.router.navigate(['/userinfo']);
@@ -115,7 +115,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onGuestClick() {
-    this.router.navigate(['/preference']);
+    // Verify email and password exist in database, and recieve auth token
+    this.login = true;
+    this.authenticationService.login("guest", "guest")
   }
 
   ngOnDestroy() {

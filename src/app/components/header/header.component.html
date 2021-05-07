@@ -27,18 +27,4 @@
         </mat-menu>
     </div>
 
-    <div style="margin-left: 20px;" *ngIf="!currentUser">
-        <button 
-            mat-stroked-button 
-            [matMenuTriggerFor]="menu" 
-            style="background-color: azure; color: black;"
-            >Options
-        </button>
-        <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="/login">Login</button>
-        <button mat-menu-item routerLink="/preference">Preference</button>
-        <button mat-menu-item routerLink="/results">Results</button>
-        </mat-menu>
-    </div>
-
 </mat-toolbar>
