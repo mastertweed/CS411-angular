@@ -3,10 +3,12 @@ import { NgForm } from "@angular/forms";
 import { Subscription } from "rxjs";
 
 import { UserPreference } from "../../Shared/Models/userpreference.model";
-import { Housing } from "../../Shared/Models/housing.model";
 import { PreferenceService } from "../../core/Services/preference.service";
 import { Results } from 'src/app/Shared/Models/results.model';
 import { Router } from '@angular/router';
+import { UserPreferenceSerivce } from 'src/app/core/Services/userpreference.service';
+import { UserService } from 'src/app/core/Services/user.service';
+import { User } from 'src/app/Shared/Models/user.model';
 
 @Component({
   selector: 'app-preference-form',
@@ -32,7 +34,10 @@ export class PreferenceFormComponent implements OnInit, OnDestroy {
   results: Results[] = [];
   private resultsSub: Subscription;
 
-  constructor(public preferenceService: PreferenceService, private router: Router) { }
+  currentUser: User;
+
+  constructor(public preferenceService: PreferenceService, private router: Router, 
+    private userpreferenceService: UserPreferenceSerivce, private userService: UserService) { }
 
   ngOnInit() { 
     this.resultsSub = this.preferenceService.getResultsUpdateListener()
@@ -40,6 +45,8 @@ export class PreferenceFormComponent implements OnInit, OnDestroy {
             this.results = results;
             this.router.navigate(['/results']);
         });
+
+    this.currentUser = this.userService.getCurrentUser();
   }
 
   onSubmitPrefer(form: NgForm) {
@@ -64,9 +71,15 @@ export class PreferenceFormComponent implements OnInit, OnDestroy {
 
     this.zipcode = form.value.zipCode
 
-    this.preferenceService.getPreferenceResults(this.maxdistvalue,this.zipcode, this.minCostValue,this.maxCostValue, this.avgAge,
+    if (this.currentUser) {
+      this.userpreferenceService.updateUserPreferenceByEmail(this.currentUser.email,this.maxdistvalue,this.zipcode.toString(), this.minCostValue,this.maxCostValue,
       this.bedrooms1,this.bedrooms2,this.bedrooms3,this.bedrooms4,this.bedrooms5,
       this.singlefamily,this.minTempValue,this.maxTempValue)
+    }
+
+    // this.preferenceService.getPreferenceResults(this.maxdistvalue,this.zipcode, this.minCostValue,this.maxCostValue, this.avgAge,
+    //   this.bedrooms1,this.bedrooms2,this.bedrooms3,this.bedrooms4,this.bedrooms5,
+    //   this.singlefamily,this.minTempValue,this.maxTempValue)
 
   }
 

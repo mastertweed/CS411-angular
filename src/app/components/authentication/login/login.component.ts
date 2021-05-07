@@ -50,8 +50,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         if (!this.login) {
           this.userinfoService.addUserInfo(this.currentUser.email,"","","","","");
 
+          // Attempt to add user to the database
+          this.userpreferenceService.createUserPreferenceByEmail(this.currentUser.email, 0, "19104", 1000000, 0, 0, 0, 0, 0, 0, 0, -100, 100)
+
           // Navigate to the preference page
-          this.router.navigate(['/user-info']);
+          this.router.navigate(['/userinfo']);
           
         } else {
 
@@ -105,10 +108,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     // Attempt to add user to the database
     this.userService.addUser(this.signupEmail,this.signupPassword)
-
-    // Attempt to add user to the database
-    this.userpreferenceService.createUserPreferenceByEmail(this.signupEmail, 
-      0, '19104', 1000000, 0, 0, 0, 0, 0, 0, 0, -100, 100)
     
     // Verify email and password exist in database, and recieve auth token
     this.authenticationService.login(this.signupEmail, this.signupPassword)

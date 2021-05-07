@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { UserService } from 'src/app/core/Services/user.service';
+import { UserPreferenceSerivce } from 'src/app/core/Services/userpreference.service';
 import { User } from 'src/app/Shared/Models/user.model';
 
 import { UserInfoService } from "../../../core/Services/user_info.service";
@@ -30,14 +31,13 @@ export class UserInformationCreateComponent implements OnInit {
 
   constructor(public userinfoService: UserInfoService, 
     private userService: UserService, 
-    private router: Router) {}
+    private router: Router,
+    private userpreferenceService: UserPreferenceSerivce) {}
 
   ngOnInit(): void {
 
     // Revert to login page if no user logged in
-    console.log(this.currentUser)
     this.currentUser = this.userService.getCurrentUser();
-    console.log(this.currentUser)
     if (!this.currentUser) {
       this.router.navigate(['/login']);
       
@@ -48,7 +48,6 @@ export class UserInformationCreateComponent implements OnInit {
       this.currentUserInfoSub = this.userinfoService.getUserInfoEmailUpdateListener()
       .subscribe((userinfo: UserInfo) => {
           this.currentUserInfo = userinfo;
-          console.log(this.currentUser.email)
           console.log(this.currentUserInfo)
       });
 
@@ -61,14 +60,13 @@ export class UserInformationCreateComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    this.email = form.value.email
     this.firstname = form.value.firstname;
     this.lastname = form.value.lastname;
     this.city = form.value.city;
     this.state = form.value.state;
     this.zipcode = form.value.zipcode;
 
-    this.userinfoService.addUserInfo(this.email,this.firstname,this.lastname,this.city,this.state,this.zipcode)
+    this.userinfoService.updateUserInfo(this.currentUser.email,this.firstname,this.lastname,this.city,this.state,this.zipcode)
   }
 
 }

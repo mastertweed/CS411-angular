@@ -45,8 +45,6 @@ export class UserInfoService {
     addUserInfo(email: string, firstname: string, lastname: string, 
         city: string, state: string, zipcode: string) {
 
-        console.log("Add new user-info service")
-
         const userinfo: UserInfo = {
              email: email, 
              firstname: firstname,
@@ -65,4 +63,38 @@ export class UserInfoService {
             });
         
     }
+
+    updateUserInfo(email: string, firstname: string, lastname: string, 
+        city: string, state: string, zipcode: string) {
+
+        console.log("Add new user-info service")
+
+        const userinfoNoEmail = {
+             firstname: firstname,
+             lastname: lastname,
+             city: city,
+             state: state,
+             zipcode: zipcode
+            }
+
+        const userinfo = {
+            email: email,
+            firstname: firstname,
+            lastname: lastname,
+            city: city,
+            state: state,
+            zipcode: zipcode
+           }
+
+        this.http
+            .post<{ message: string }>(environment.apiURL + "/userinfo/" + email, userinfoNoEmail)
+            .subscribe(responseData => {
+                console.log(responseData.message);
+                this.usersinfo.push(userinfo);
+                this.usersinfoUpdated.next([...this.usersinfo])
+            });
+        
+    }
+
+    
 }
